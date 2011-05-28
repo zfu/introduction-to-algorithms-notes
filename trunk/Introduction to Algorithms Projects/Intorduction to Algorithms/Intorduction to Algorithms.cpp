@@ -15,6 +15,12 @@ namespace chapter8{
 namespace chapter9{
 	int test();
 }
+namespace chapter11{
+	int test();
+}
+namespace chapter12{
+	int test();
+}
 namespace chapter15{
 	int test();
 }
@@ -22,7 +28,7 @@ namespace chapter15{
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	chapter9::test();
+	chapter12::test();
 	return 0;
 }
 
