@@ -79,7 +79,9 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="binary_search_tree.cpp" />
     <ClCompile Include="dynamic_programming.cpp" />
+    <ClCompile Include="hash_table.cpp" />
     <ClCompile Include="heap_sort.cpp" />
     <ClCompile Include="Intorduction to Algorithms.cpp" />
     <ClCompile Include="linear_sort.cpp" />

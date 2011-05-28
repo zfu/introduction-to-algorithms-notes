@@ -28,6 +28,12 @@
     <Filter Include="Chapter9">
       <UniqueIdentifier>{0af3fa6b-cdfd-4322-a0f7-d27045280da8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter11">
+      <UniqueIdentifier>{769f6a87-2471-406d-908f-34e074d2016d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter12">
+      <UniqueIdentifier>{fd4b45b3-0fee-4891-a457-b81bc3f7769d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -61,6 +67,12 @@
     </ClCompile>
     <ClCompile Include="nth_element.cpp">
       <Filter>Chapter9</Filter>
+    </ClCompile>
+    <ClCompile Include="hash_table.cpp">
+      <Filter>Chapter11</Filter>
+    </ClCompile>
+    <ClCompile Include="binary_search_tree.cpp">
+      <Filter>Chapter12</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
