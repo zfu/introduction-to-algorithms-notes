@@ -1,3 +1,21 @@
+//////////////////////////////////////////////////////////////////////////  
+///    COPYRIGHT NOTICE  
+///    Copyright (c) 2009
+///    All rights reserved.  
+///  
+/// @file		hash_table.cpp
+/// @brief		hash_table.cppµÄ¼ò¶ÌÃèÊö 
+///  			
+///  			hash_table.cppµÄÏêÏ¸ÃèÊö
+/// 
+/// @author		Ì·´¨Ææ	chuanqi.tan@gmail.com 
+/// @date		2011/05/30
+/// @version 	1.0
+///  
+///  
+///    ÐÞ¶©ËµÃ÷£º×î³õ°æ±¾  
+//////////////////////////////////////////////////////////////////////////  
+
 #include "stdafx.h"
 #include <iostream>
 #include <algorithm>

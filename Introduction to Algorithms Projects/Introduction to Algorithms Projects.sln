@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Intorduction to Algorithms", "Intorduction to Algorithms\Intorduction to Algorithms.vcxproj", "{3CEDCAAC-AB51-47CF-A1E6-F6E1055E134E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{25FD6C7F-F6E0-4B0C-A4EE-9425F4E6DB07}"
-	ProjectSection(SolutionItems) = preProject
-		Notes\算法导论 读书笔记.docx = Notes\算法导论 读书笔记.docx
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
