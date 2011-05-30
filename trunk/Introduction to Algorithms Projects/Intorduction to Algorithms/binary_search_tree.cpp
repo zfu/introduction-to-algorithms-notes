@@ -1,3 +1,21 @@
+//////////////////////////////////////////////////////////////////////////  
+///    COPYRIGHT NOTICE  
+///    Copyright (c) 2009
+///    All rights reserved.  
+///  
+/// @file		binary_search_tree.cpp
+/// @brief		binary_search_tree.cpp的简短描述 
+///  			
+///  			binary_search_tree.cpp的详细描述
+/// 
+/// @author		谭川奇	chuanqi.tan@gmail.com 
+/// @date		2011/05/30
+/// @version 	1.0
+///  
+///  
+///    修订说明：最初版本  
+//////////////////////////////////////////////////////////////////////////  
+
 #include "stdafx.h"
 #include <iostream>
 #include <algorithm>
@@ -16,7 +34,7 @@ namespace chapter12
 		/// 二叉查找树中的结点
 		struct _Node
 		{
-			int Item;
+			int Value;
 			_Node *Parent;
 			_Node *Left;
 			_Node *Right;
@@ -35,8 +53,8 @@ namespace chapter12
 		/// 插入一个结点
 		/// 
 		/// 向二叉查找树中插入一个值
-		/// @param		要插入的值
-		/// @param		是否插入成功，失败意味着树中已经存在该值
+		/// @param	new_value	要插入的值
+		/// @return				是否插入成功，失败意味着树中已经存在该值
 		bool Insert(int const new_value)
 		{
 			if (Search(new_value))
@@ -47,7 +65,7 @@ namespace chapter12
 			if (!_root)
 			{//插入的是第1个节点
 				_root = new _Node();
-				_root->Item = new_value;
+				_root->Value = new_value;
 				return true;
 			}
 
@@ -56,42 +74,28 @@ namespace chapter12
 
 			while (current_node)
 			{
-				if (new_value > current_node->Item)
+				_Node *&next_node_pointer = (new_value > current_node->Value ? current_node->Right : current_node->Left);
+				if (next_node_pointer)
 				{
-					if (current_node->Right)
-					{
-						current_node = current_node->Right;
-					}
-					else
-					{
-						current_node->Right = new _Node();
-						current_node->Right->Item = new_value;
-						current_node->Right->Parent = current_node;
-						break;
-					}
+					current_node = next_node_pointer;
 				}
-				if (new_value < current_node->Item)
+				else
 				{
-					if (current_node->Left)
-					{
-						current_node = current_node->Left;
-					}
-					else
-					{
-						current_node->Left = new _Node();
-						current_node->Left->Item = new_value;
-						current_node->Left->Parent = current_node;
-						break;
-					}
+					next_node_pointer = new _Node();
+					next_node_pointer->Value = new_value;
+					next_node_pointer->Parent = current_node;
+					break;
 				}
 			}
+
+			return true;
 		}
 
 		/// 删除结点
 		/// 
 		/// 在二叉查找树中删除一个值
-		/// @param		要删除的值
-		/// @return		是否删除成功，删除失败意味着树中没有这个值的结点
+		/// @param	delete_value	要删除的值
+		/// @return					是否删除成功，删除失败意味着树中没有这个值的结点
 		bool Delete(int const delete_value)
 		{
 			_Node *delete_node = _Search(_root, delete_value);
@@ -109,16 +113,18 @@ namespace chapter12
 		/// 查找元素
 		/// 
 		/// 在当前二叉查找树中查找某一值
-		/// @param		search_value要查找的值
-		/// @return		是否在二叉树中找到值为search_value的结点
+		/// @param	search_value	要查找的值
+		/// @return					是否在二叉树中找到值为search_value的结点
+		/// @retval		true		查找到了该元素
+		/// @retval		false		找不到该元素
 		bool Search(int const search_value) const
 		{
-			return _Search(_root, search_value);
+			return _Search(_root, search_value) != NULL;
 		}
 
 		/// 显示当前二叉查找树的状态
 		/// 
-		/// 使用Graphviz的dot语言画出当前二叉查找树
+		/// 使用dot描述当前二叉查找树
 		void Display() const
 		{
 			cout << "digraph graphname" << (rand() % 1000) << "{" << endl
@@ -133,15 +139,10 @@ namespace chapter12
 			if (delete_node->Left && delete_node->Right)
 			{//要删除的结点同时存在左子树和右子树
 				//前驱结点：前驱一定存在，因为该结点同时存在左右子树
-				_Node *previous_node = delete_node; 
-				//求结点的前驱：先左一下，再右到头
-				previous_node = previous_node->Left;
-				while (previous_node->Right)
-				{
-					previous_node = previous_node->Right;
-				}
+				_Node *previous_node = _GetPreviousNode(delete_node);
 
-				delete_node->Item = previous_node->Item;
+				delete_node->Value = previous_node->Value;
+
 				//previous_nde一定没有右子树，所以再递归调用一定是走这个if的else分支
 				_DeleteNode(previous_node);	
 			}
@@ -176,6 +177,20 @@ namespace chapter12
 			}
 		}
 
+		//得到一个节点的前驱
+		_Node * _GetPreviousNode( _Node * node )
+		{
+			_Node *previous_node = node; 
+			//求结点的前驱：先左一下，再右到头
+			previous_node = previous_node->Left;
+			while (previous_node->Right)
+			{
+				previous_node = previous_node->Right;
+			}
+
+			return previous_node;
+		}
+
 		void _RecursiveReleaseNode(_Node *node)
 		{
 			if (node)
@@ -186,44 +201,40 @@ namespace chapter12
 			}
 		}
 
+		/// 非递归查找一个结点
 		_Node * _Search(_Node *node, int const search_value) const
 		{
-			if (node)
+			while (node && node->Value != search_value)
 			{
-				if (node->Item == search_value)
+				if (search_value < node->Value)
 				{
-					return node;
-				}
-				else if (search_value < node->Item)
-				{
-					return _Search(node->Left, search_value);
+					node = node->Left;
 				}
 				else
 				{
-					return _Search(node->Right, search_value);
+					node = node->Right;
 				}
 			}
-			else
-			{//node 为空当然是未找到
-				return NULL;
-			}
+
+			//到这里如果node为空就是未找到
+			return node;
 		}
 
 		void _Display(_Node *node) const
 		{
 			if (node)
 			{
-				cout << "    node" << node->Item << "[label = \"<f0>|<f1>" << node->Item << "|<f2>\"];" << endl;
+				cout << "    node" << node->Value << "[label = \"<f0>|<f1>" << node->Value << "|<f2>\"];" << endl;
 
 				if (node->Left)
 				{
-					cout << "    \"node" << node->Item << "\":f0 -> \"node" << node->Left->Item << "\":f1;" << endl;
+					cout << "    \"node" << node->Value << "\":f0 -> \"node" << node->Left->Value << "\":f1;" << endl;
 					_Display(node->Left);
 				}
-				
+
 				if (node->Right)
 				{
-					cout << "    \"node" << node->Item << "\":f2 -> \"node" << node->Right->Item << "\":f1;" << endl;
+					cout << "    \"node" << node->Value << "\":f2 -> \"node" << node->Right->Value << "\":f1;" << endl;
 					_Display(node->Right);
 				}
 			}
@@ -232,11 +243,13 @@ namespace chapter12
 		_Node *_root;			///< 二叉查找树的根结点
 	};
 
+
+
 	int test()
 	{
 		BinarySearchTree bst;
 		//用随机值生成一棵二叉查找树
-		for (int i = 0; i < 100; ++i)
+		for (int i = 0; i < 10; ++i)
 		{
 			bst.Insert(rand() % 100);						
 		}
@@ -258,7 +271,7 @@ namespace chapter12
 		{
 			if (bst.Search(i))
 			{
-				cout << "搜索[" << i << "]元素：" << boolalpha << true << endl;
+				cout << "搜索[" << i << "]元素：\t成功" << endl;
 			}			
 		}
 

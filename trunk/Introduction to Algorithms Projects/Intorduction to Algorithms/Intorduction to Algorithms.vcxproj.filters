@@ -34,6 +34,9 @@
     <Filter Include="Chapter12">
       <UniqueIdentifier>{fd4b45b3-0fee-4891-a457-b81bc3f7769d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter13">
+      <UniqueIdentifier>{3d276951-d400-48ce-b355-852d6da96b4f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -73,6 +76,9 @@
     </ClCompile>
     <ClCompile Include="binary_search_tree.cpp">
       <Filter>Chapter12</Filter>
+    </ClCompile>
+    <ClCompile Include="red_black_tree.cpp">
+      <Filter>Chapter13</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
