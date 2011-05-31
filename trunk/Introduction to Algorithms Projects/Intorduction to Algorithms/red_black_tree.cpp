@@ -300,8 +300,8 @@ private:
             }
         }
 
-        //处理性质2被破坏只需要简简单单一句话
-        _root->Color = BLACK;
+		//处理性质2被破坏只需要简简单单一句话
+        _root->Color = BLACK;	
     }
 
     /// 左旋
@@ -422,59 +422,38 @@ private:
                 x = _root;
             }
         }
-        //_nullNode->Parent = _root;   //最后将node置为根结点，
-        x->Color = BLACK;    //并改为黑色。
+
+		//最后只需要简单置x为黑结点就可以，_root的改变已经由左右旋自动处理了
+        x->Color = BLACK;    //改为黑色。
     }
 
     /// 得到节点的后继
     RBTreeNode * _Successor( RBTreeNode *node )
     {
-        if ( node->Right->IsValid() )
-        {
-            //如果节点有右孩子，则：右一下，左到头
-            node = node->Right;
-            while ( node->Left->IsValid() )
-            {
-                node = node->Left;
-            }
-            return node;
-        }
-        else
-        {
-            if ( node->Parent->IsValid() )
-            {
-                //不是根结点
-                node = node->Parent;
-
-                if ( node->Right->IsValid() )
-                {
-                    //父结点有右孩子，则右一下，然后左到头
-                    node = node->Right;
-                    while ( node->Left->IsValid() )
-                    {
-                        node = node->Left;
-                    }
-                }
-
-                return node;
-            }
-            else
-            {
-                //是根结点，又没有又孩子，那该结点就是最大值，没有后继
-                return s_nil;
-            }
-        }
+		if (!node->Right->IsValid())
+		{
+			if (node->Parent->IsValid())
+			{
+				node = node->Parent;
+			}
+			else
+			{//是根结点，又没有右孩子，那该结点就是最大值，没有后继
+				return s_nil;
+			}			
+		}
+		if ( node->Right->IsValid() )
+		{//如果节点有右孩子，则：右一下，左到头			
+			node = node->Right;
+			while ( node->Left->IsValid() )
+			{
+				node = node->Left;
+			}			
+		}
+		return node;
     }
-
-
-
-
-
-
-
-
+	
+	
     RBTreeNode *_root;				///< 根结点
-
     static RBTreeNode *s_nil;		///< 红黑树的叶子结点（哨兵）
 };
 
@@ -505,7 +484,7 @@ int test()
     //删除所有的奇数
 	for ( int i = 0; i < 100; ++i )
 	{
-		//if ( i % 2 == 0 )
+		if ( i % 2 == 1 && i < 50)
 		{
 			if ( bst.Delete( i ) )
 			{
@@ -514,6 +493,35 @@ int test()
 		}
 	}
     bst.Display();
+	//删除所有的偶数
+	for ( int i = 0; i < 100; ++i )
+	{
+		if ( i % 2 == 0 && i > 50)
+		{
+			if ( bst.Delete( i ) )
+			{
+				cout << "Deleted [" << i << "]" << endl;
+			}
+		}
+	}
+	bst.Display();
+	//再随机添加
+	for ( int i = 0; i < 50; ++i )
+	{
+		int v = rand() % 100;
+		bst.Insert( v, v );
+	}
+	bst.Display();
+	//删除所有
+	for ( int i = 0; i < 100; ++i )
+	{
+		if ( bst.Delete( i ) )
+		{
+			cout << "Deleted [" << i << "]" << endl;
+		}
+	
+	}
+	//bst.Display();
 
 	for ( int i = 0; i < 50; ++i )
 	{
