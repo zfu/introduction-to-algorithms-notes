@@ -158,14 +158,7 @@ namespace chapter12
 				}
 				else
 				{
-					if (delete_node->Parent->Left == delete_node)
-					{
-						delete_node->Parent->Left = sub_node;
-					}
-					else
-					{
-						delete_node->Parent->Right = sub_node;
-					}
+					(delete_node->Parent->Left == delete_node ? delete_node->Parent->Left : delete_node->Parent->Right) = sub_node;
 
 					if (sub_node)
 					{//在delete_node有子结点时需要设置子结点的Parent指针
@@ -177,9 +170,16 @@ namespace chapter12
 			}
 		}
 
-		//得到一个节点的前驱
+		/// 得到一个同时存在左右子树的节点的前驱
+		/// 
+		/// @notes		node的前驱一定存在，因为node同时存在左子树和右子树
 		_Node * _GetPreviousNode( _Node * node )
 		{
+			if (!node->Left || !node->Right)
+			{//先决条件必须满足，否则求无限制的结点的前驱算法不是这样的
+				throw std::exception("node必须同时存在左子树和右子树");
+			}
+
 			_Node *previous_node = node; 
 			//求结点的前驱：先左一下，再右到头
 			previous_node = previous_node->Left;
