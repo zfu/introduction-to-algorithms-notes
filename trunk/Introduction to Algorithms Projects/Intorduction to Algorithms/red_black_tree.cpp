@@ -107,26 +107,15 @@ public:
             //实际要删除的结点，因为后面会有一个交换，所以实际删除y之后就达到了z的效果
             RBTreeNode *y = NULL;
             if ( !z->Left->IsValid() || !z->Right->IsValid() )
-            {
-                //至少有一个孩子为nil
+            {//至少有一个孩子为nil                
                 y = z;
             }
             else
-            {
-                //左右孩子均不为nil，则找后继
+            {//左右孩子均不为nil，则找后继                
                 y = _Successor( z );
             }
 
-            RBTreeNode *x = NULL;
-            if ( y->Left->IsValid() )
-            {
-                x = y->Left;
-            }
-            else
-            {
-                x = y->Right;
-            }
-
+            RBTreeNode *x = ( y->Left->IsValid() ? y->Left : y->Right );
             x->Parent = y->Parent;
 
             if ( !y->Parent->IsValid() )
@@ -430,26 +419,25 @@ private:
     /// 得到节点的后继
     RBTreeNode * _Successor( RBTreeNode *node )
     {
-		if (!node->Right->IsValid())
-		{
-			if (node->Parent->IsValid())
-			{
-				node = node->Parent;
-			}
-			else
-			{//是根结点，又没有右孩子，那该结点就是最大值，没有后继
-				return s_nil;
-			}			
-		}
-		if ( node->Right->IsValid() )
-		{//如果节点有右孩子，则：右一下，左到头			
+		if (node->Right->IsValid())
+		{//存在右结点时：右一下，左到头
 			node = node->Right;
 			while ( node->Left->IsValid() )
 			{
 				node = node->Left;
-			}			
+			}	
+			return node;
 		}
-		return node;
+		else
+		{//不存在右结点时：一直向上，直到找到一次非右孩子或到根了为止
+			RBTreeNode *y = node->Parent;
+			while (!y->IsValid() && node == y->Right)
+			{
+				node = y;
+				y = y->Parent;
+			}
+			return y;
+		}		
     }
 	
 	
@@ -481,7 +469,7 @@ int test()
     bst.Display();
 
     //bst.Delete(5);
-    //删除所有的奇数
+    //删除所有的小奇数
 	for ( int i = 0; i < 100; ++i )
 	{
 		if ( i % 2 == 1 && i < 50)
@@ -493,7 +481,7 @@ int test()
 		}
 	}
     bst.Display();
-	//删除所有的偶数
+	//删除所有的大偶数
 	for ( int i = 0; i < 100; ++i )
 	{
 		if ( i % 2 == 0 && i > 50)

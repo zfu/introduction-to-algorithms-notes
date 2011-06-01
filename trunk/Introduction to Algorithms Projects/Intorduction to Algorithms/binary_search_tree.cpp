@@ -180,15 +180,15 @@ namespace chapter12
 				throw std::exception("node必须同时存在左子树和右子树");
 			}
 
-			_Node *previous_node = node; 
+			//还是注意先决条件：node是一个同时存在左右子树的结点，否则算法不是这样的
 			//求结点的前驱：先左一下，再右到头
-			previous_node = previous_node->Left;
-			while (previous_node->Right)
+			node = node->Left;
+			while (node->Right)
 			{
-				previous_node = previous_node->Right;
+				node = node->Right;
 			}
 
-			return previous_node;
+			return node;
 		}
 
 		void _RecursiveReleaseNode(_Node *node)

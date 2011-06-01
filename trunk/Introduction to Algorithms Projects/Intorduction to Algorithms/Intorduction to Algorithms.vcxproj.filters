@@ -62,9 +62,6 @@
     <ClCompile Include="heap_sort.cpp">
       <Filter>Chapter6</Filter>
     </ClCompile>
-    <ClCompile Include="dynamic_programming.cpp">
-      <Filter>Chapter15</Filter>
-    </ClCompile>
     <ClCompile Include="linear_sort.cpp">
       <Filter>Chapter8</Filter>
     </ClCompile>
@@ -79,6 +76,18 @@
     </ClCompile>
     <ClCompile Include="red_black_tree.cpp">
       <Filter>Chapter13</Filter>
+    </ClCompile>
+    <ClCompile Include="assemble_dispatch.cpp">
+      <Filter>Chapter15</Filter>
+    </ClCompile>
+    <ClCompile Include="matrix_list_multiply.cpp">
+      <Filter>Chapter15</Filter>
+    </ClCompile>
+    <ClCompile Include="longest_common_subsequence.cpp">
+      <Filter>Chapter15</Filter>
+    </ClCompile>
+    <ClCompile Include="best_binary_search_tree.cpp">
+      <Filter>Chapter15</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
