@@ -88,6 +88,7 @@
     <ClCompile Include="Intorduction to Algorithms.cpp" />
     <ClCompile Include="linear_sort.cpp" />
     <ClCompile Include="matrix_list_multiply.cpp" />
+    <ClCompile Include="neatly_print.cpp" />
     <ClCompile Include="nth_element.cpp" />
     <ClCompile Include="quick_sort.cpp" />
     <ClCompile Include="red_black_tree.cpp" />

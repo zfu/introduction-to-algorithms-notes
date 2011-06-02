@@ -89,5 +89,8 @@
     <ClCompile Include="best_binary_search_tree.cpp">
       <Filter>Chapter15</Filter>
     </ClCompile>
+    <ClCompile Include="neatly_print.cpp">
+      <Filter>Chapter15</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
