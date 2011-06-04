@@ -92,5 +92,11 @@
     <ClCompile Include="neatly_print.cpp">
       <Filter>Chapter15</Filter>
     </ClCompile>
+    <ClCompile Include="plan_party.cpp">
+      <Filter>Chapter15</Filter>
+    </ClCompile>
+    <ClCompile Include="bitonic_tour.cpp">
+      <Filter>Chapter15</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

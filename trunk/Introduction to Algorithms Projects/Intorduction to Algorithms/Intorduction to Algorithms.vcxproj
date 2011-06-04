@@ -82,6 +82,7 @@
     <ClCompile Include="assemble_dispatch.cpp" />
     <ClCompile Include="best_binary_search_tree.cpp" />
     <ClCompile Include="binary_search_tree.cpp" />
+    <ClCompile Include="bitonic_tour.cpp" />
     <ClCompile Include="longest_common_subsequence.cpp" />
     <ClCompile Include="hash_table.cpp" />
     <ClCompile Include="heap_sort.cpp" />
@@ -90,6 +91,7 @@
     <ClCompile Include="matrix_list_multiply.cpp" />
     <ClCompile Include="neatly_print.cpp" />
     <ClCompile Include="nth_element.cpp" />
+    <ClCompile Include="plan_party.cpp" />
     <ClCompile Include="quick_sort.cpp" />
     <ClCompile Include="red_black_tree.cpp" />
     <ClCompile Include="stdafx.cpp">
