@@ -37,6 +37,9 @@
     <Filter Include="Chapter13">
       <UniqueIdentifier>{3d276951-d400-48ce-b355-852d6da96b4f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter16">
+      <UniqueIdentifier>{04c92f2b-db5f-4785-b6cc-63c199c12161}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -97,6 +100,9 @@
     </ClCompile>
     <ClCompile Include="bitonic_tour.cpp">
       <Filter>Chapter15</Filter>
+    </ClCompile>
+    <ClCompile Include="huffman_code.cpp">
+      <Filter>Chapter16</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
