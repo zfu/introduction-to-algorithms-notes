@@ -46,6 +46,9 @@
     <Filter Include="Tools">
       <UniqueIdentifier>{63d7bf8f-e5b8-456e-876a-7f3362041f62}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter21">
+      <UniqueIdentifier>{85455e6f-eeb2-42da-bbb5-e2e180bdae7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -118,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="graphviz_shower.cpp">
       <Filter>Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="disjoint_set_forest.cpp">
+      <Filter>Chapter21</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

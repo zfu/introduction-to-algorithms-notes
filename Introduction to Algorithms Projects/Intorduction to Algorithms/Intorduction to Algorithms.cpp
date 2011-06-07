@@ -55,11 +55,15 @@ namespace chapter18
 	//B树
 	void test();
 }
+namespace chapter21
+{
+	//用于不相交集合的数据结构（并查集）
+	void test();
+}
 
 int _tmain( int argc, _TCHAR* argv[] )
 {
-    chapter13::test();
-    int a[2][2] = {{1, 2}, {2, 3}};
+    chapter21::test();
     return 0;
 }
 
