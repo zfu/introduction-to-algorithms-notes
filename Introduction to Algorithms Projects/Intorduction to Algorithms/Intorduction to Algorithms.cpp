@@ -50,10 +50,15 @@ namespace chapter16
 	//Ì°ĞÄËã·¨
     void HuffmanCode();						//¹ş·òÂü±àÂë
 }
+namespace chapter18
+{
+	//BÊ÷
+	void test();
+}
 
 int _tmain( int argc, _TCHAR* argv[] )
 {
-    chapter16::HuffmanCode();
+    chapter13::test();
     int a[2][2] = {{1, 2}, {2, 3}};
     return 0;
 }

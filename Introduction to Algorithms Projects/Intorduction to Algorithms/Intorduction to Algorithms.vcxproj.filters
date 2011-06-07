@@ -43,6 +43,9 @@
     <Filter Include="Chapter18">
       <UniqueIdentifier>{4ea53258-cd19-457c-933e-cc87bb57c796}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Tools">
+      <UniqueIdentifier>{63d7bf8f-e5b8-456e-876a-7f3362041f62}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -53,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="graphviz_shower.h">
+      <Filter>Tools</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="B_tree.cpp">
       <Filter>Chapter18</Filter>
+    </ClCompile>
+    <ClCompile Include="graphviz_shower.cpp">
+      <Filter>Tools</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
