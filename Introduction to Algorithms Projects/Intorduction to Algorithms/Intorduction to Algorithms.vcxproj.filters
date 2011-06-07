@@ -40,6 +40,9 @@
     <Filter Include="Chapter16">
       <UniqueIdentifier>{04c92f2b-db5f-4785-b6cc-63c199c12161}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter18">
+      <UniqueIdentifier>{4ea53258-cd19-457c-933e-cc87bb57c796}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -103,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="huffman_code.cpp">
       <Filter>Chapter16</Filter>
+    </ClCompile>
+    <ClCompile Include="B_tree.cpp">
+      <Filter>Chapter18</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
