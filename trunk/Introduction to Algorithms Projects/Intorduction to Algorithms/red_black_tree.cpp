@@ -23,7 +23,8 @@
 #include <iterator>
 #include <iomanip>
 #include <limits>
-#include <fstream>
+#include <sstream>
+#include "graphviz_shower.h"
 using namespace std;
 
 namespace chapter13
@@ -175,16 +176,14 @@ public:
     /// 使用dot描述当前红黑树
     void Display() const
     {
-        ofstream dot_file( "c:\\red_back_tree.dot" );
+		stringstream ss;
 
-        dot_file << "digraph graphname" << ( rand() % 1000 ) << "{" << endl
-                 << "    node [shape = record,height = .1];" << endl;
-        _Display( dot_file, _root );
-        dot_file << "}" << endl;
+		ss << "digraph graphname" << ( rand() % 1000 ) << "{" << endl
+			<< "    node [shape = record,height = .1];" << endl;
+		_Display( ss, _root );
+		ss << "}" << endl;
 
-        dot_file.close();
-        system( "dot -Tpng c:\\red_back_tree.dot -o c:\\red_back_tree.png" );
-        system( "c:\\red_back_tree.png" );
+		qi::ShowGraphvizViaDot(ss.str());
     }
 
 private:
@@ -198,22 +197,22 @@ private:
         }
     }
 
-    void _Display( ofstream &dot_file, RBTreeNode *node ) const
+    void _Display( stringstream &ss, RBTreeNode *node ) const
     {
         if ( node->IsValid() )
         {
-            dot_file << "    node" << node->Value << "[label = \"<f0>|<f1>" << node->Value << "|<f2>\", color = " << ( node->Color == RED ? "red" : "black" ) << "];" << endl;
+            ss << "    node" << node->Value << "[label = \"<f0>|<f1>" << node->Value << "|<f2>\", color = " << ( node->Color == RED ? "red" : "black" ) << "];" << endl;
 
             if ( node->Left->IsValid() )
             {
-                dot_file << "    \"node" << node->Value << "\":f0 -> \"node" << node->Left->Value << "\":f1;" << endl;
-                _Display( dot_file, node->Left );
+                ss << "    \"node" << node->Value << "\":f0 -> \"node" << node->Left->Value << "\":f1;" << endl;
+                _Display( ss, node->Left );
             }
 
             if ( node->Right->IsValid() )
             {
-                dot_file << "    \"node" << node->Value << "\":f2 -> \"node" << node->Right->Value << "\":f1;" << endl;
-                _Display( dot_file, node->Right );
+                ss << "    \"node" << node->Value << "\":f2 -> \"node" << node->Right->Value << "\":f1;" << endl;
+                _Display( ss, node->Right );
             }
         }
     }
