@@ -29,9 +29,9 @@ namespace chapter21
 
 		/// 创建一个集合的操作：MAKE-SET
 		template<typename T>
-		static DisjointSet<T> & MakeSet(T const &item)
+		static DisjointSet<T> * MakeSet(T const &item)
 		{
-			return *new DisjointSet<T>(item);
+			return new DisjointSet<T>(item);
 		}
 
 		/// 查找所属集合的操作：FIND-SET
@@ -39,7 +39,7 @@ namespace chapter21
 		static DisjointSet<T> & FindSet(DisjointSet<T> &a_set)
 		{
 			//路径压缩
-			if (&a_set != a_set.Parent)		//通过地址判等
+			if (&a_set != a_set.Parent)		//判断本身不是代表
 			{
 				a_set.Parent = &FindSet(*a_set.Parent);
 			}
@@ -69,7 +69,7 @@ namespace chapter21
 			}
 
 			if (x.Rank == y.Rank)
-			{
+			{//只有在秩相同时才会将最后的根结点的秩+1
 				++y.Rank;
 			}
 		}
@@ -80,10 +80,10 @@ namespace chapter21
 		vector<DisjointSetForest::DisjointSet<int> *> nodes;
 		for (int i = 0; i < 10; ++i)
 		{
-			nodes.push_back(&DisjointSetForest::MakeSet(i));
+			nodes.push_back(DisjointSetForest::MakeSet(i));
 		}
 
-		
+
 		for (int i = 0; i < 5; ++i)
 		{
 			int index1 = rand() % 10;
