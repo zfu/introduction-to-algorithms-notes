@@ -49,6 +49,9 @@
     <Filter Include="Chapter21">
       <UniqueIdentifier>{85455e6f-eeb2-42da-bbb5-e2e180bdae7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter19">
+      <UniqueIdentifier>{00fcd5cd-3054-4283-9b63-35b51f11878f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -62,6 +65,9 @@
     </ClInclude>
     <ClInclude Include="graphviz_shower.h">
       <Filter>Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="binomial_heaps.h">
+      <Filter>Chapter19</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
