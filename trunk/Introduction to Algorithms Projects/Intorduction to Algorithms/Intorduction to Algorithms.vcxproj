@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="binomial_heaps.h" />
+    <ClInclude Include="graphics.h" />
     <ClInclude Include="graphviz_shower.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -83,6 +84,7 @@
   <ItemGroup>
     <ClCompile Include="assemble_dispatch.cpp" />
     <ClCompile Include="best_binary_search_tree.cpp" />
+    <ClCompile Include="bfs_dfs_topologicalsort.cpp" />
     <ClCompile Include="binary_search_tree.cpp" />
     <ClCompile Include="bitonic_tour.cpp" />
     <ClCompile Include="B_tree.cpp" />
@@ -104,6 +106,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="strongly_connected_component.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

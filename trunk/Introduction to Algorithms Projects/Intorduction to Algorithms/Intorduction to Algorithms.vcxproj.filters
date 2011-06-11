@@ -52,6 +52,9 @@
     <Filter Include="Chapter19">
       <UniqueIdentifier>{00fcd5cd-3054-4283-9b63-35b51f11878f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter22">
+      <UniqueIdentifier>{c934f5c2-689d-4373-a584-be70526c7bcc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -69,12 +72,12 @@
     <ClInclude Include="binomial_heaps.h">
       <Filter>Chapter19</Filter>
     </ClInclude>
+    <ClInclude Include="graphics.h">
+      <Filter>Chapter22</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Intorduction to Algorithms.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="quick_sort.cpp">
@@ -130,6 +133,15 @@
     </ClCompile>
     <ClCompile Include="disjoint_set_forest.cpp">
       <Filter>Chapter21</Filter>
+    </ClCompile>
+    <ClCompile Include="bfs_dfs_topologicalsort.cpp">
+      <Filter>Chapter22</Filter>
+    </ClCompile>
+    <ClCompile Include="Intorduction to Algorithms.cpp">
+      <Filter>Chapter22</Filter>
+    </ClCompile>
+    <ClCompile Include="strongly_connected_component.cpp">
+      <Filter>Chapter22</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
