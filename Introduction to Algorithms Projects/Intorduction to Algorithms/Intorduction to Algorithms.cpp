@@ -60,10 +60,14 @@ namespace chapter21
 	//用于不相交集合的数据结构（并查集）
 	void test();
 }
+namespace chapter22
+{
+	void BFS_And_DFS();
+}
 
 int _tmain( int argc, _TCHAR* argv[] )
 {
-    chapter21::test();
+    chapter22::BFS_And_DFS();
     return 0;
 }
 
