@@ -86,6 +86,9 @@ namespace chapter22
 
 	
 	private:
+		//GraphicsViaAdjacencyList(GraphicsViaAdjacencyList<T> const &);
+		//GraphicsViaAdjacencyList<T> & operator=(GraphicsViaAdjacencyList<T> &);
+
 		vector<T>				_v;		///< 图的顶点的集合
 		vector<AdjacencyList *>	_e;		///< 图的边，即邻接表
 		GraphicsType			_type;	///< 图的类型
@@ -102,11 +105,6 @@ namespace chapter22
 
 		}
 
-		GrpahicsViaAdjacencyMatrix(vector<VT> const &v, vector<vector<ET>> const &e, GraphicsType type = Digraph) : _v(v), _e(e), _type(type)
-		{
-			assert(e.size() == v.size() && e[0].size() == v.size());
-		}
-
 		void Link2Vertex(size_t index1, size_t index2, ET weight)
 		{
 			_e[index1][index2] = weight;
@@ -115,6 +113,16 @@ namespace chapter22
 				_e[index2][index1] = weight;
 			}
 		}
+
+		/// 查询两个顶点是否连接
+		bool IsLinked(size_t index1, size_t index2) const
+		{
+			return _e[index1][index2] != ET();
+		}
+
+		inline vector<VT> & GetVertex()			{return _v;}
+		inline vector<vector<ET>> & GetEdge()	{return _e;}
+
 
 	
 	private:
