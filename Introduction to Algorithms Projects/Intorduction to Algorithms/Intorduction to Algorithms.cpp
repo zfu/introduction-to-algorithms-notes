@@ -62,12 +62,21 @@ namespace chapter21
 }
 namespace chapter22
 {
-	void BFS_And_DFS();
+	//图的基本算法 
+	void BFS_And_DFS();						//广度&深度优先遍历
+	void TopologicalSort();					//拓扑排序
+	void StronglyConnectedComponent();		//强连通分支
+}
+namespace chapter23
+{
+	//最生成树
+	void Kruskal();
+	void Prim();
 }
 
 int _tmain( int argc, _TCHAR* argv[] )
 {
-    chapter22::BFS_And_DFS();
+    chapter23::Prim();
     return 0;
 }
 

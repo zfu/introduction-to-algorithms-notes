@@ -55,6 +55,9 @@
     <Filter Include="Chapter22">
       <UniqueIdentifier>{c934f5c2-689d-4373-a584-be70526c7bcc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter23">
+      <UniqueIdentifier>{3aea6264-7bb3-4da5-ba04-761ae6fcab06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -74,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="graphics.h">
       <Filter>Chapter22</Filter>
+    </ClInclude>
+    <ClInclude Include="disjoint_set_forest.h">
+      <Filter>Chapter21</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,14 +140,23 @@
     <ClCompile Include="disjoint_set_forest.cpp">
       <Filter>Chapter21</Filter>
     </ClCompile>
-    <ClCompile Include="bfs_dfs_topologicalsort.cpp">
+    <ClCompile Include="strongly_connected_component.cpp">
       <Filter>Chapter22</Filter>
     </ClCompile>
     <ClCompile Include="Intorduction to Algorithms.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="topological_sort.cpp">
       <Filter>Chapter22</Filter>
     </ClCompile>
-    <ClCompile Include="strongly_connected_component.cpp">
+    <ClCompile Include="bfs_dfs.cpp">
       <Filter>Chapter22</Filter>
+    </ClCompile>
+    <ClCompile Include="kruskal.cpp">
+      <Filter>Chapter23</Filter>
+    </ClCompile>
+    <ClCompile Include="prim.cpp">
+      <Filter>Chapter23</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

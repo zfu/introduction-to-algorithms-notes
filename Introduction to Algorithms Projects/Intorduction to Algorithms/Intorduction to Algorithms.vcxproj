@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="binomial_heaps.h" />
+    <ClInclude Include="disjoint_set_forest.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="graphviz_shower.h" />
     <ClInclude Include="stdafx.h" />
@@ -84,13 +85,14 @@
   <ItemGroup>
     <ClCompile Include="assemble_dispatch.cpp" />
     <ClCompile Include="best_binary_search_tree.cpp" />
-    <ClCompile Include="bfs_dfs_topologicalsort.cpp" />
+    <ClCompile Include="bfs_dfs.cpp" />
     <ClCompile Include="binary_search_tree.cpp" />
     <ClCompile Include="bitonic_tour.cpp" />
     <ClCompile Include="B_tree.cpp" />
     <ClCompile Include="disjoint_set_forest.cpp" />
     <ClCompile Include="graphviz_shower.cpp" />
     <ClCompile Include="huffman_code.cpp" />
+    <ClCompile Include="kruskal.cpp" />
     <ClCompile Include="longest_common_subsequence.cpp" />
     <ClCompile Include="hash_table.cpp" />
     <ClCompile Include="heap_sort.cpp" />
@@ -100,6 +102,7 @@
     <ClCompile Include="neatly_print.cpp" />
     <ClCompile Include="nth_element.cpp" />
     <ClCompile Include="plan_party.cpp" />
+    <ClCompile Include="prim.cpp" />
     <ClCompile Include="quick_sort.cpp" />
     <ClCompile Include="red_black_tree.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -107,6 +110,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="strongly_connected_component.cpp" />
+    <ClCompile Include="topological_sort.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
