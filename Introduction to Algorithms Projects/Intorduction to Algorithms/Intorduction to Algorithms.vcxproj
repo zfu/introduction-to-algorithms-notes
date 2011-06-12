@@ -84,11 +84,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="assemble_dispatch.cpp" />
+    <ClCompile Include="bellman_ford.cpp" />
     <ClCompile Include="best_binary_search_tree.cpp" />
     <ClCompile Include="bfs_dfs.cpp" />
     <ClCompile Include="binary_search_tree.cpp" />
     <ClCompile Include="bitonic_tour.cpp" />
     <ClCompile Include="B_tree.cpp" />
+    <ClCompile Include="dijkstra.cpp" />
     <ClCompile Include="disjoint_set_forest.cpp" />
     <ClCompile Include="graphviz_shower.cpp" />
     <ClCompile Include="huffman_code.cpp" />

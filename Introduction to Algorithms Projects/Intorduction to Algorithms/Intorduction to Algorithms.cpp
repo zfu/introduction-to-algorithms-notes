@@ -73,10 +73,16 @@ namespace chapter23
 	void Kruskal();
 	void Prim();
 }
+namespace chapter24
+{
+	//单源最短路径
+	bool BellmanFord();
+	void Dijkstra();
+}
 
 int _tmain( int argc, _TCHAR* argv[] )
 {
-    chapter23::Prim();
+    chapter24::Dijkstra();
     return 0;
 }
 
