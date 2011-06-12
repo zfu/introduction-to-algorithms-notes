@@ -31,7 +31,7 @@ namespace chapter22
 
 			for (size_t i = 0; i < g.GetVertex().size(); ++i)
 			{
-				if (!trivaled[i] && g.IsLinked(current, i))
+				if (!trivaled[i] && g.IsLinked(current, i).first)
 				{
 					//没有被遍历过 且 与当前遍历的元素邻接
 					q.push(i);
@@ -55,7 +55,7 @@ namespace chapter22
 
 		for (size_t i = 0; i < g.GetVertex().size(); ++i)
 		{
-			if (!traversed[i] && g.IsLinked(index, i))
+			if (!traversed[i] && g.IsLinked(index, i).first)
 			{
 				vector<int> v = DFS_Visit(g, i, d, f, traversed, time);
 				this_time_traversed.insert(this_time_traversed.end(), v.begin(), v.end());

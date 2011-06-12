@@ -5,7 +5,8 @@
 
 
 #include <vector>
-using std::vector;
+#include <utility>
+using namespace std;
 
 namespace chapter22
 {
@@ -24,8 +25,9 @@ namespace chapter22
 		/// 邻接表上的一个结点
 		struct AdjacencyList
 		{
-			T				Item;		///< 顶点的标识
-			AdjacencyList	*Next;		///< 指向下一个结点
+			size_t			AimNodeIndex;	///< 目标顶点的编号
+			double			Weight;			///< 该条连接边的权值
+			AdjacencyList	*Next;			///< 指向下一个结点
 		};
 
 	public:
@@ -49,40 +51,58 @@ namespace chapter22
 
 
 		/// 标识图中两个标点之间有一条边
-		void Link2Vertex(size_t index1, size_t index2)
+		void Link2Vertex(size_t index1, size_t index2, double weight = 1)
 		{
 			AdjacencyList *node = new AdjacencyList();
-			node->Item = _v[index2];
+			node->AimNodeIndex = index2;
 			node->Next = _e[index1];
+			node->Weight = weight;
 			_e[index1] = node;
 
 			if (_type == Undigraph)
 			{
 				//无向图
 				node = new AdjacencyList();
-				node->Item = _v[index1];
+				node->AimNodeIndex = index1;
 				node->Next = _e[index2];
+				node->Weight = weight;
 				_e[index2] = node;
 			}
 		}
 
 		/// 查询两个顶点是否连接
-		bool IsLinked(size_t index1, size_t index2) const
+		/// 
+		/// 返回两个顶点是否相连，同时还返回该条边的权值。如果不相连，就返回<false, 0>，这里的权值无意义
+		pair<bool, double> IsLinked(size_t index1, size_t index2) const
 		{
 			AdjacencyList *l = _e[index1];
 			while(l)
 			{
-				if (l->Item == _v[index2])
+				if (l->AimNodeIndex == index2)
 				{
-					return true;
+					return make_pair(true, l->Weight);
 				}
 				l = l->Next;
 			}
-			return false;
+			return make_pair(false, 0);
 		}
 
 		inline vector<T> & GetVertex()				{return _v;}
 		inline vector<AdjacencyList *> & GetEdge()	{return _e;}
+		vector<pair<size_t, size_t>> GetAllEdges()
+		{
+			vector<pair<size_t, size_t>> edges;
+			for (size_t i = 0; i < _e.size(); ++i)
+			{
+				AdjacencyList *l = _e[i];
+				while(l)
+				{
+					edges.push_back(make_pair(i, l->AimNodeIndex));
+					l = l->Next;
+				}
+			}
+			return edges;
+		}
 
 	
 	private:

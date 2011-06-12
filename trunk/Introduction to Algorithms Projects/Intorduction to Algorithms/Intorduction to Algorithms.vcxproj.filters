@@ -58,6 +58,9 @@
     <Filter Include="Chapter23">
       <UniqueIdentifier>{3aea6264-7bb3-4da5-ba04-761ae6fcab06}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter24">
+      <UniqueIdentifier>{f604a8de-ec83-41f4-9912-36689e811ce9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -157,6 +160,12 @@
     </ClCompile>
     <ClCompile Include="prim.cpp">
       <Filter>Chapter23</Filter>
+    </ClCompile>
+    <ClCompile Include="bellman_ford.cpp">
+      <Filter>Chapter24</Filter>
+    </ClCompile>
+    <ClCompile Include="dijkstra.cpp">
+      <Filter>Chapter24</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
