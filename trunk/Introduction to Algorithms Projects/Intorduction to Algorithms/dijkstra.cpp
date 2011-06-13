@@ -54,27 +54,32 @@ namespace chapter24
 
 		InitializeSingleSource(g, d, parent_index, start_index);
 
+		auto greater_pred = [&](int index1, int index2){
+			return d[index1] > d[index2];
+		};
+
+		//使用普通二叉堆来做这个优先队列。还可以考虑使用二项堆和斐波那契堆来进行加速
 		vector<int> Q;
 		for (int i = 0; i < v.size(); ++i)
 		{
 			Q.push_back(i);
 		}
+		make_heap(Q.begin(), Q.end(), greater_pred);
+
 
 		while(!Q.empty())
 		{
-			auto min_ele = min_element(Q.begin(), Q.end(), [&](int index1, int index2){
-				return d[index1] < d[index2];
-			});
-
 			for_each(edges.begin(), edges.end(), [&](pair<size_t, size_t> const &p){
-				if (p.first == *min_ele)
+				if (p.first == Q[0])
 				{
 					//对所有从min_ele发出的边进行松弛操作
 					Relax(g, d, parent_index, p.first, p.second);
 				}
 			});
 
-			Q.erase(min_ele);
+			//这里d被Relax进行了改变，相当于改变了优先队列中若干项的优先值，因此要重建堆
+			make_heap(Q.begin(), Q.end(), greater_pred);
+			pop_heap(Q.begin(), Q.end(), greater_pred); Q.pop_back();
 		}
 		
 
