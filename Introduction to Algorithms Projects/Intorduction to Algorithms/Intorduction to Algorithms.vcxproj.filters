@@ -67,6 +67,9 @@
     <Filter Include="Chapter26">
       <UniqueIdentifier>{8e9f3f06-8dcb-414a-9a04-587b3439c43e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter20">
+      <UniqueIdentifier>{4d09b3c4-0afc-4e54-abb6-5b691225c31d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -95,6 +98,9 @@
     </ClInclude>
     <ClInclude Include="dijkstra.h">
       <Filter>Chapter24</Filter>
+    </ClInclude>
+    <ClInclude Include="fibonacci_heap.h">
+      <Filter>Chapter20</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +193,12 @@
     </ClCompile>
     <ClCompile Include="ford_fulkerson.cpp">
       <Filter>Chapter26</Filter>
+    </ClCompile>
+    <ClCompile Include="binomial_heaps_myself.cpp">
+      <Filter>Chapter19</Filter>
+    </ClCompile>
+    <ClCompile Include="fibonacci_heap.cpp">
+      <Filter>Chapter20</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

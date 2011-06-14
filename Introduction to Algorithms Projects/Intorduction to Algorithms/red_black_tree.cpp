@@ -106,7 +106,7 @@ public:
         if ( z->IsValid() )
         {
             //实际要删除的结点，因为后面会有一个交换，所以实际删除y之后就达到了z的效果
-            RBTreeNode *y = NULL;
+            RBTreeNode *y = nullptr;
             if ( !z->Left->IsValid() || !z->Right->IsValid() )
             {//至少有一个孩子为nil                
                 y = z;
@@ -446,7 +446,7 @@ private:
 
 
 template<typename TKey, typename TValue>
-typename RBTree<TKey, TValue>::RBTreeNode * RBTree<TKey, TValue>::s_nil = NULL;
+typename RBTree<TKey, TValue>::RBTreeNode * RBTree<TKey, TValue>::s_nil = nullptr;
 
 int test()
 {

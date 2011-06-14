@@ -80,6 +80,7 @@
     <ClInclude Include="binomial_heaps.h" />
     <ClInclude Include="dijkstra.h" />
     <ClInclude Include="disjoint_set_forest.h" />
+    <ClInclude Include="fibonacci_heap.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="graphviz_shower.h" />
     <ClInclude Include="stdafx.h" />
@@ -91,10 +92,12 @@
     <ClCompile Include="best_binary_search_tree.cpp" />
     <ClCompile Include="bfs_dfs.cpp" />
     <ClCompile Include="binary_search_tree.cpp" />
+    <ClCompile Include="binomial_heaps_myself.cpp" />
     <ClCompile Include="bitonic_tour.cpp" />
     <ClCompile Include="B_tree.cpp" />
     <ClCompile Include="dijkstra.cpp" />
     <ClCompile Include="disjoint_set_forest.cpp" />
+    <ClCompile Include="fibonacci_heap.cpp" />
     <ClCompile Include="floyd_warshall.cpp" />
     <ClCompile Include="ford_fulkerson.cpp" />
     <ClCompile Include="graphviz_shower.cpp" />

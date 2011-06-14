@@ -81,7 +81,7 @@ namespace chapter22
 		GraphicsViaAdjacencyList<char> gT(g);
 		for (size_t i = 0; i < gT.GetEdges().size(); ++i)
 		{
-			gT.GetEdges()[i] = NULL;
+			gT.GetEdges()[i] = nullptr;
 		}
 		for (size_t i = 0; i < g.GetVertex().size(); ++i)
 		{
