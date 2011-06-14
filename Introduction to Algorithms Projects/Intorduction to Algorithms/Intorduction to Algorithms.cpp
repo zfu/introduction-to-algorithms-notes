@@ -79,7 +79,7 @@ namespace chapter22
 }
 namespace chapter23
 {
-	//最生成树
+	//最小生成树
 	void Kruskal();
 	void Prim();
 }
