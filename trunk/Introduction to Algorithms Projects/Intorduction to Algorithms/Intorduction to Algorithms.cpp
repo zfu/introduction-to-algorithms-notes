@@ -55,6 +55,16 @@ namespace chapter18
 	//B树
 	void test();
 }
+namespace chapter19
+{
+	//二项堆
+	void testBinomialHeaps();
+}
+namespace chapter20
+{
+	//斐波那契堆
+	int testFibonacciHeap();				 
+}
 namespace chapter21
 {
 	//用于不相交集合的数据结构（并查集）
@@ -93,7 +103,7 @@ namespace chapter26
 
 int _tmain( int argc, _TCHAR* argv[] )
 {
-    chapter26::testFordFulkerson();
+    chapter19::testBinomialHeaps();
     return 0;
 }
 

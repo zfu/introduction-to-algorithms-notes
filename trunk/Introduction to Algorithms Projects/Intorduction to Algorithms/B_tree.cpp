@@ -15,10 +15,10 @@ namespace chapter18
     {
         vector<int>			Keys;
         vector<BTreeNode *>	Childs;
-		BTreeNode			*Parent;		///< 父结点。当该结点是树的根结点时，Parent结点为NULL
+		BTreeNode			*Parent;		///< 父结点。当该结点是树的根结点时，Parent结点为nullptr
         bool				IsLeaf;			///< 是否为叶子结点
 
-		BTreeNode() : Parent(NULL), IsLeaf(true){}
+		BTreeNode() : Parent(nullptr), IsLeaf(true){}
 
         size_t KeysSize()
         {
@@ -50,7 +50,7 @@ namespace chapter18
     class BTree
     {
     public:
-        BTree(int t) : _root( NULL ), _t(t)    
+        BTree(int t) : _root( nullptr ), _t(t)    
 		{
 			assert(t >= 2);
 		}
@@ -78,7 +78,7 @@ namespace chapter18
 		/// 如果分裂到了根结点，还要处理树长高的情况。树只有在进行分裂操作时才会长高！
         bool Insert( int new_key )
 		{
-			if ( _root == NULL )	//空树
+			if ( _root == nullptr )	//空树
 			{
 				_root = new BTreeNode();
 				_root->IsLeaf = true;
@@ -86,7 +86,7 @@ namespace chapter18
 				return true;
 			}
 
-			if ( Search( new_key ).first == NULL )	//是否已经存在该结点
+			if ( Search( new_key ).first == nullptr )	//是否已经存在该结点
 			{
 				BTreeNode *node = _root;
 				while (!node->IsLeaf)
@@ -124,7 +124,7 @@ namespace chapter18
 					assert(node->Childs.empty() || node->Childs.size() == node->Keys.size() + 1);
 
 					BTreeNode *parent_node = node->Parent;
-					if (parent_node == NULL)	//分裂到了根结点，树要长高了，需要NEW一个结点出来
+					if (parent_node == nullptr)	//分裂到了根结点，树要长高了，需要NEW一个结点出来
 					{
 						parent_node = new BTreeNode();
 						parent_node->IsLeaf = false;
@@ -167,7 +167,7 @@ namespace chapter18
         bool Delete( int key_to_del )
 		{
 			auto found_node = Search(key_to_del);
-			if (found_node.first == NULL)		//找不到值为key_to_del的结点
+			if (found_node.first == nullptr)		//找不到值为key_to_del的结点
 			{
 				return false;
 			}
@@ -235,7 +235,7 @@ namespace chapter18
 				{
 					//成为了一棵空B树
 					delete _root;
-					_root = NULL;
+					_root = nullptr;
 				}
 				return;
 			}
@@ -310,7 +310,7 @@ namespace chapter18
 					{
 						//头结点向下移动一级，此时树的高度-1
 						_root = _root->Childs[0];
-						_root->Parent = NULL;
+						_root->Parent = nullptr;
 
 						delete node;
 						return;
@@ -321,7 +321,7 @@ namespace chapter18
 					if (node->KeysSize() < _t - 1)
 					{					
 						BTreeNode *left_brother = _GetLeftBrother(node);
-						if (left_brother == NULL)
+						if (left_brother == nullptr)
 						{
 							left_brother = _GetRightBrother(node);
 							swap(node, left_brother);
@@ -350,7 +350,7 @@ namespace chapter18
 			if ( !node )
             {
                 //未找到，树为空的情况
-                return make_pair( static_cast<BTreeNode *>(NULL), 0 );
+                return make_pair( static_cast<BTreeNode *>(nullptr), 0 );
             }
             else
             {
@@ -370,7 +370,7 @@ namespace chapter18
 				if (node->IsLeaf)
 				{
 					//已经找到根了，不能再向下了未找到
-					return make_pair( static_cast<BTreeNode *>(NULL), 0 );
+					return make_pair( static_cast<BTreeNode *>(nullptr), 0 );
 				}
 				else
 				{
@@ -408,7 +408,7 @@ namespace chapter18
 			}
 		}
 
-		/// 得到一个结点的左兄弟结点，如果不存在左兄弟结点则返回NULL
+		/// 得到一个结点的左兄弟结点，如果不存在左兄弟结点则返回nullptr
 		BTreeNode * _GetLeftBrother(BTreeNode *node)
 		{
 			if (node && node->Parent)
@@ -422,10 +422,10 @@ namespace chapter18
 					}
 				}
 			}
-			return NULL;
+			return nullptr;
 		}
 
-		/// 得到一个结点的右兄弟结点，如果不存在右兄弟结点则返回NULL
+		/// 得到一个结点的右兄弟结点，如果不存在右兄弟结点则返回nullptr
 		BTreeNode * _GetRightBrother(BTreeNode *node)
 		{
 			if (node && node->Parent)
@@ -439,7 +439,7 @@ namespace chapter18
 					}
 				}
 			}
-			return NULL;
+			return nullptr;
 		}
 
 		/// 得到一个结点在其父结点中属于第几个子结点

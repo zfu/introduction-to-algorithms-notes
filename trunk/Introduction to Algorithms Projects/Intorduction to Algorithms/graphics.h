@@ -33,7 +33,7 @@ namespace chapter22
 
 	public:
 		/// 通过结点来初始化一个图
-		GraphicsViaAdjacencyList(vector<T> const &v, GraphicsType type) : _v(v), _e(v.size(), NULL), _type(type)
+		GraphicsViaAdjacencyList(vector<T> const &v, GraphicsType type) : _v(v), _e(v.size(), nullptr), _type(type)
 		{
 
 		}

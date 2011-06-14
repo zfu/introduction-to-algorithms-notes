@@ -46,11 +46,11 @@ namespace chapter11
 		{
 			_p = 101;		//一个足够大的质数
 			_m = 10;		//槽的个数
-			_items.resize(_m, NULL);
+			_items.resize(_m, nullptr);
 			for (int i = 0; i < _m; ++i)
 			{//全部先设置好头结点
 				_items[i] = new _Node();
-				_items[i]->Next = NULL;
+				_items[i]->Next = nullptr;
 			}
 
 			// 全域散列的基本思想是在执行<b>开始</b>时，从一族仔细设计的函数中，随机的选择一个作为散列函数。
@@ -74,7 +74,7 @@ namespace chapter11
 		{//始终插入在键表的头，头结点之后的第1个位置
 			_Node *new_item = new _Node;
 			new_item->Item = new_value;
-			new_item->Next = NULL;
+			new_item->Next = nullptr;
 			int hash_value = _HashFunction(new_value);
 
 			new_item->Next = _items[hash_value]->Next;
@@ -115,7 +115,7 @@ namespace chapter11
 				}
 				root = root->Next;
 			}
-			return NULL;
+			return nullptr;
 		}
 
 

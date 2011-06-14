@@ -34,7 +34,7 @@ namespace chapter15
 
 		void PlanPartyViaDyanmicProgramming(Human *root)
 		{
-			if (root != NULL && !root->IsValid)
+			if (root != nullptr && !root->IsValid)
 			{
 				//root 参加的情况
 				root->IncludeValue = accumulate(root->Childs.begin(), root->Childs.end(), root->LovePartyValue, [](int acc, Human *human)->int{

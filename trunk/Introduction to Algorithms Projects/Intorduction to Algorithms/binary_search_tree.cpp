@@ -41,7 +41,7 @@ namespace chapter12
 		};
 
 	public:
-		BinarySearchTree() : _root(NULL)
+		BinarySearchTree() : _root(nullptr)
 		{}
 
 		~BinarySearchTree()
@@ -119,7 +119,7 @@ namespace chapter12
 		/// @retval		false		找不到该元素
 		bool Search(int const search_value) const
 		{
-			return _Search(_root, search_value) != NULL;
+			return _Search(_root, search_value) != nullptr;
 		}
 
 		/// 显示当前二叉查找树的状态
@@ -152,7 +152,7 @@ namespace chapter12
 				//sub_node要么为delete_node的左子树，要么为delete_node的右子树，或者在delete_node无子结点时为空
 				_Node *sub_node = (delete_node->Left ? delete_node->Left : delete_node->Right);
 
-				if (delete_node->Parent == NULL)
+				if (delete_node->Parent == nullptr)
 				{//是第1个结点
 					_root = sub_node;
 				}
