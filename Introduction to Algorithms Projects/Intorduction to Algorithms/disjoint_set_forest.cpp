@@ -1,4 +1,4 @@
-#include "stdafx.h"
+
 #include "disjoint_set_forest.h"
 using namespace std;
 

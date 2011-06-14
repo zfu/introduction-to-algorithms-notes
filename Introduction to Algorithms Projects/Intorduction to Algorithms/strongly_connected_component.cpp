@@ -1,6 +1,6 @@
 /// 强连通分支
 
-#include "stdafx.h"
+
 
 #include <vector>
 #include <iostream>
@@ -79,9 +79,9 @@ namespace chapter22
 
 		//step2:得到gT并得到按时间戳f逆向排序
 		GraphicsViaAdjacencyList<char> gT(g);
-		for (size_t i = 0; i < gT.GetEdge().size(); ++i)
+		for (size_t i = 0; i < gT.GetEdges().size(); ++i)
 		{
-			gT.GetEdge()[i] = NULL;
+			gT.GetEdges()[i] = NULL;
 		}
 		for (size_t i = 0; i < g.GetVertex().size(); ++i)
 		{

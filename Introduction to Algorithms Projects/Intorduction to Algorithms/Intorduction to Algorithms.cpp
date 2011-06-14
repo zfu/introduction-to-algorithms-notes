@@ -1,7 +1,7 @@
 // Intorduction to Algorithms.cpp : 定义控制台应用程序的入口点。
 //
 
-#include "stdafx.h"
+
 
 #include <iostream>
 
@@ -76,13 +76,24 @@ namespace chapter23
 namespace chapter24
 {
 	//单源最短路径
-	bool BellmanFord();
-	void Dijkstra();
+	bool testBellmanFord();
+	void testDijkstra();
+}
+namespace chapter25
+{
+	//每对顶点间的最短路径
+	void FloydWarshall();
+	void Johnson();
+}
+namespace chapter26
+{
+	//最大流
+	void testFordFulkerson();
 }
 
 int _tmain( int argc, _TCHAR* argv[] )
 {
-    chapter24::Dijkstra();
+    chapter26::testFordFulkerson();
     return 0;
 }
 

@@ -61,6 +61,12 @@
     <Filter Include="Chapter24">
       <UniqueIdentifier>{f604a8de-ec83-41f4-9912-36689e811ce9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter25">
+      <UniqueIdentifier>{2bbfb332-8e34-4803-9b5f-18ef27adae88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter26">
+      <UniqueIdentifier>{8e9f3f06-8dcb-414a-9a04-587b3439c43e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -83,6 +89,12 @@
     </ClInclude>
     <ClInclude Include="disjoint_set_forest.h">
       <Filter>Chapter21</Filter>
+    </ClInclude>
+    <ClInclude Include="bellman_ford.h">
+      <Filter>Chapter24</Filter>
+    </ClInclude>
+    <ClInclude Include="dijkstra.h">
+      <Filter>Chapter24</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +178,15 @@
     </ClCompile>
     <ClCompile Include="dijkstra.cpp">
       <Filter>Chapter24</Filter>
+    </ClCompile>
+    <ClCompile Include="floyd_warshall.cpp">
+      <Filter>Chapter25</Filter>
+    </ClCompile>
+    <ClCompile Include="johnson.cpp">
+      <Filter>Chapter25</Filter>
+    </ClCompile>
+    <ClCompile Include="ford_fulkerson.cpp">
+      <Filter>Chapter26</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

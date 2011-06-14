@@ -1,6 +1,6 @@
 /// Kruskal最小生成树算法
 
-#include "stdafx.h"
+
 
 #include <vector>
 #include <iostream>

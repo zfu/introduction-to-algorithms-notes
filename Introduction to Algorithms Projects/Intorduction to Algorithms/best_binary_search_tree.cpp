@@ -16,7 +16,7 @@
 ///    修订说明：最初版本
 //////////////////////////////////////////////////////////////////////////
 
-#include "stdafx.h"
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
