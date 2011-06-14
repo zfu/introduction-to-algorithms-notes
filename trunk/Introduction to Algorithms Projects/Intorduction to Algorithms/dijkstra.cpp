@@ -1,4 +1,4 @@
-#include "stdafx.h"
+
 
 #include <vector>
 #include <iostream>
@@ -10,22 +10,14 @@
 #include <queue>
 #include <limits>
 #include "graphics.h"
+#include "dijkstra.h"
 
 using namespace std;
 using namespace chapter22;
 
 namespace chapter24
 {
-	void InitializeSingleSource(GraphicsViaAdjacencyList<char> &g, vector<int> &d, vector<int> &parent_index, int start_index);
-
-	/// 松弛
-	/// 
-	/// 前提条件是：index1->index2存在着一条边
-	/// 因此用index1的这条边来松弛index2的d值，并且设置parent[index2] = index1
-	void Relax(GraphicsViaAdjacencyList<char> &g, vector<int> &d, vector<int> &parent_index, int index1, int index2);
-
-
-	void Dijkstra()
+	void testDijkstra()
 	{
 		cout << "Dijkstra最短路径" << endl;
 		//生成P367页的图24-6
@@ -50,37 +42,7 @@ namespace chapter24
 		int start_index = 0;
 		vector<int> d(g.GetVertex().size());
 		vector<int> parent_index(g.GetVertex().size());
-		auto edges = g.GetAllEdges();
-
-		InitializeSingleSource(g, d, parent_index, start_index);
-
-		auto greater_pred = [&](int index1, int index2){
-			return d[index1] > d[index2];
-		};
-
-		//使用普通二叉堆来做这个优先队列。还可以考虑使用二项堆和斐波那契堆来进行加速
-		vector<int> Q;
-		for (int i = 0; i < v.size(); ++i)
-		{
-			Q.push_back(i);
-		}
-		make_heap(Q.begin(), Q.end(), greater_pred);
-
-
-		while(!Q.empty())
-		{
-			for_each(edges.begin(), edges.end(), [&](pair<size_t, size_t> const &p){
-				if (p.first == Q[0])
-				{
-					//对所有从min_ele发出的边进行松弛操作
-					Relax(g, d, parent_index, p.first, p.second);
-				}
-			});
-
-			//这里d被Relax进行了改变，相当于改变了优先队列中若干项的优先值，因此要重建堆
-			make_heap(Q.begin(), Q.end(), greater_pred);
-			pop_heap(Q.begin(), Q.end(), greater_pred); Q.pop_back();
-		}
+		Dijkstra(g, start_index, d, parent_index);
 		
 
 		for (size_t i = 0; i < g.GetVertex().size(); ++i)

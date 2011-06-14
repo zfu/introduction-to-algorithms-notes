@@ -49,6 +49,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ForcedIncludeFiles>stdafx.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -75,7 +76,9 @@
     <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bellman_ford.h" />
     <ClInclude Include="binomial_heaps.h" />
+    <ClInclude Include="dijkstra.h" />
     <ClInclude Include="disjoint_set_forest.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="graphviz_shower.h" />
@@ -92,8 +95,11 @@
     <ClCompile Include="B_tree.cpp" />
     <ClCompile Include="dijkstra.cpp" />
     <ClCompile Include="disjoint_set_forest.cpp" />
+    <ClCompile Include="floyd_warshall.cpp" />
+    <ClCompile Include="ford_fulkerson.cpp" />
     <ClCompile Include="graphviz_shower.cpp" />
     <ClCompile Include="huffman_code.cpp" />
+    <ClCompile Include="johnson.cpp" />
     <ClCompile Include="kruskal.cpp" />
     <ClCompile Include="longest_common_subsequence.cpp" />
     <ClCompile Include="hash_table.cpp" />
@@ -110,6 +116,8 @@
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ForcedIncludeFiles>
     </ClCompile>
     <ClCompile Include="strongly_connected_component.cpp" />
     <ClCompile Include="topological_sort.cpp" />

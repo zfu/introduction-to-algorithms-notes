@@ -17,7 +17,7 @@
 //	（3）c[i][j] = max{c[i][j-1], c[i-1][j]} 如果i,j>0，且a[i-1] != b[j-1]。 
 //	按此算式可写出计算两个序列的最长公共子序列的长度函数。由于c[i][j]的产生仅依赖于c[i-1][j-1]、c[i-1][j]和c[i][j-1]，故可以从c[m][n]开始，跟踪c[i][j]的产生过程，逆向构造出最长公共子序列。细节见程序。 
 
-#include "stdafx.h"
+
 
 #include <vector>
 #include <string>
