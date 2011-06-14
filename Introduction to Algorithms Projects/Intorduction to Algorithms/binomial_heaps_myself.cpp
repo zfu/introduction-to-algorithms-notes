@@ -10,6 +10,7 @@ using namespace std;
 namespace chapter19
 {
 	/// 二项堆
+	template<typename KeyType>
 	class BinomialHeaps
 	{
 	public:
@@ -20,7 +21,7 @@ namespace chapter19
 			BinomialHeapNode	*Sibling;		
 
 			unsigned int 		Degree;
-			int					Key;
+			KeyType				Key;
 		};
 
 		/// 建立一个空的二项堆
@@ -34,64 +35,8 @@ namespace chapter19
 			//TODO:delete all nodes
 		}
 
-		bool IsEmpty()
-		{
-			return _head_list == nullptr;
-		}
-
-		void Display()
-		{
-			stringstream ss;
-
-			ss << "digraph graphname" << "{" << endl
-				<< "    RootList [shape = box];" << endl;
-
-			BinomialHeapNode *node = _head_list;
-			if (node)
-			{
-				ss << "    RootList -> " << node->Key << ";" << endl;
-			}			
-			while(node)
-			{
-				_Display(ss, node);
-
-				if (node->Sibling)
-				{
-					ss << "    " << node->Key << " -> " << node->Sibling->Key << ";" << endl;
-				}
-				node = node->Sibling;
-			}
-
-			ss << "}" << endl;
-			qi::ShowGraphvizViaDot(ss.str());
-
-		}
-
-		//画一棵二项树
-		void _Display(stringstream &ss, BinomialHeapNode *tree)
-		{
-			if (tree)
-			{
-				BinomialHeapNode *child = tree->Child;
-				if (child)
-				{
-					vector<BinomialHeapNode *> childs;
-					while (child)
-					{
-						childs.push_back(child);
-						child = child->Sibling;
-					}
-
-					for_each(childs.begin(), childs.end(), [&](BinomialHeapNode *c){
-						ss << "    " << c->Key << " -> " << tree->Key << ";" << endl;
-						_Display(ss, c);
-					});
-				}
-			}
-		}
-
 		/// 在二项堆中插入一个新结点
-		void Insert(int new_key)
+		void Insert(KeyType new_key)
 		{
 			BinomialHeaps new_heap;
 			new_heap._head_list = new BinomialHeapNode();
@@ -102,9 +47,9 @@ namespace chapter19
 			this->Union(new_heap);
 		}
 
-		int Mininum()
+		KeyType Mininum() const
 		{
-			vector<int> values_in_head_list;
+			vector<KeyType> values_in_head_list;
 			BinomialHeapNode *node = _head_list;
 			while(node != nullptr)
 			{
@@ -114,7 +59,7 @@ namespace chapter19
 			return *min_element(values_in_head_list.begin(), values_in_head_list.end());
 		}
 
-		int ExtractMinium()
+		KeyType ExtractMinium()
 		{
 			vector<BinomialHeapNode *> head_nodes;
 			BinomialHeapNode *l = _head_list;
@@ -127,7 +72,7 @@ namespace chapter19
 				return left->Key < right->Key;
 			});
 			int min_index = min_ele - head_nodes.begin();
-			int min_value = (*min_ele)->Key;
+			KeyType min_value = (*min_ele)->Key;
 			BinomialHeapNode	*min_node = head_nodes[min_index];
 
 			if (min_index == 0)
@@ -151,9 +96,6 @@ namespace chapter19
 				head_nodes[min_index - 1]->Sibling = head_nodes[min_index + 1];
 			}
 
-
-
-
 			BinomialHeaps new_head;
 			new_head._head_list = min_node->Child;
 			BinomialHeapNode *x = new_head._head_list;
@@ -168,7 +110,7 @@ namespace chapter19
 			return min_value;
 		}
 
-		void Decrease(BinomialHeapNode *x, int k)
+		void Decrease(BinomialHeapNode *x, KeyType k)
 		{
 			if (k > x->Key)
 			{
@@ -188,8 +130,7 @@ namespace chapter19
 
 		void Delete(BinomialHeapNode *node)
 		{
-			Decrease(node, numeric_limits<int>::min());
-			Display();
+			Decrease(node, numeric_limits<KeyType>::min());
 			ExtractMinium();
 		}
 		
@@ -220,7 +161,7 @@ namespace chapter19
 			sort(nodes.begin(), nodes.end(), [](BinomialHeapNode *left, BinomialHeapNode *right){
 				return left->Degree < right->Degree;
 			});
-			for (int i = 0; i < nodes.size() - 1; ++i)
+			for (size_t i = 0; i < nodes.size() - 1; ++i)
 			{
 				nodes[i]->Sibling = nodes[i + 1];
 			}
@@ -270,6 +211,61 @@ namespace chapter19
 			}
 		}
 	
+		BinomialHeapNode * Search(KeyType key) const
+		{
+			BinomialHeapNode *tree = _head_list;
+
+			//遍历根链
+			while(tree)
+			{
+				BinomialHeapNode *node = _SearchInTree(tree, key);
+				if (node != nullptr)
+				{
+					return node;
+				}
+				tree = tree->Sibling;
+			}
+			return nullptr;
+		}
+
+		bool IsEmpty() const
+		{
+			return _head_list == nullptr;
+		}
+
+		BinomialHeapNode const * const GetHeadList() const
+		{
+			return _head_list;
+		}
+
+		void Display() const
+		{
+			stringstream ss;
+
+			ss << "digraph graphname" << "{" << endl
+				<< "    RootList [shape = box];" << endl;
+
+			BinomialHeapNode *node = _head_list;
+			if (node)
+			{
+				ss << "    RootList -> " << node->Key << ";" << endl;
+			}			
+			while(node)
+			{
+				_Display(ss, node);
+
+				if (node->Sibling)
+				{
+					ss << "    " << node->Key << " -> " << node->Sibling->Key << ";" << endl;
+				}
+				node = node->Sibling;
+			}
+
+			ss << "}" << endl;
+			qi::ShowGraphvizViaDot(ss.str());
+
+		}
+
 	private:
 		void _Link(BinomialHeapNode *y, BinomialHeapNode *z)
 		{
@@ -278,7 +274,51 @@ namespace chapter19
 			z->Child = y;
 			++z->Degree;
 		}
-public:
+		BinomialHeapNode * _SearchInTree(BinomialHeapNode *tree, KeyType key) const
+		{
+			if (tree->Key == key)
+			{
+				return tree;
+			}
+
+			BinomialHeapNode *node = tree->Child;
+			while(node)
+			{
+				BinomialHeapNode *n = _SearchInTree(node, key);
+				if (n)
+				{
+					return n;
+				}
+				node = node->Sibling;
+			}
+
+			return nullptr;
+		}
+
+		//画一棵二项树
+		void _Display(stringstream &ss, BinomialHeapNode *tree) const
+		{
+			if (tree)
+			{
+				BinomialHeapNode *child = tree->Child;
+				if (child)
+				{
+					vector<BinomialHeapNode *> childs;
+					while (child)
+					{
+						childs.push_back(child);
+						child = child->Sibling;
+					}
+
+					for_each(childs.begin(), childs.end(), [&](BinomialHeapNode *c){
+						ss << "    " << c->Key << " -> " << tree->Key << ";" << endl;
+						_Display(ss, c);
+					});
+				}
+			}
+		}
+
+	private:
 		BinomialHeapNode *_head_list;			//根表
 	};
 
@@ -286,26 +326,30 @@ public:
 	void testBinomialHeaps()
 	{
 		cout << "二项堆" << endl;
-		BinomialHeaps bh;
-		for (int i = 0; i < 10; ++i)
-		{
-			bh.Insert(rand() % 100);
-		}
-		//bh.Display();
-
-		while (!bh.IsEmpty())
-		{
-			cout << bh.ExtractMinium() << "\t";
-		}
-		//bh.Display();
-
+		BinomialHeaps<int> bh;
 		for (int i = 0; i < 10; ++i)
 		{
 			bh.Insert(rand() % 100);
 		}
 		bh.Display();
 
-		bh.Delete(bh._head_list);
+		while (!bh.IsEmpty())
+		{
+			cout << bh.ExtractMinium() << "\t";
+		}
+		bh.Display();
+
+		for (int i = 0; i < 64; ++i)
+		{
+			int r = rand() % 100;
+			if (bh.Search(r) == nullptr)
+			{
+				bh.Insert(r);
+			}			
+		}
+		bh.Display();
+
+		bh.Delete(const_cast<BinomialHeaps<int>::BinomialHeapNode *>(bh.GetHeadList()));
 		bh.Display();
 	}
 }
