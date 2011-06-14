@@ -11,9 +11,10 @@ namespace chapter19
 {
 	/// 二项堆
 	template<typename KeyType>
-	class BinomialHeaps
+	class BinomialHeap
 	{
 	public:
+		/// 二项堆中的一个结点
 		struct BinomialHeapNode
 		{
 			BinomialHeapNode	*Parent;
@@ -25,20 +26,29 @@ namespace chapter19
 		};
 
 		/// 建立一个空的二项堆
-		BinomialHeaps()
+		BinomialHeap()
 		{
 			_head_list = nullptr;
 		}
 
-		~BinomialHeaps()
+		/// 析构
+		~BinomialHeap()
 		{
-			//TODO:delete all nodes
+			BinomialHeapNode *tree = _head_list;
+
+			//遍历根链进行清理操作
+			while(tree)
+			{
+				auto next = tree->Sibling;
+				_DeleteTree(tree);
+				tree = next;
+			}
 		}
 
 		/// 在二项堆中插入一个新结点
 		void Insert(KeyType new_key)
 		{
-			BinomialHeaps new_heap;
+			BinomialHeap new_heap;
 			new_heap._head_list = new BinomialHeapNode();
 			new_heap._head_list->Parent = new_heap._head_list->Child = new_heap._head_list->Sibling = nullptr;
 			new_heap._head_list->Degree = 0;
@@ -47,6 +57,7 @@ namespace chapter19
 			this->Union(new_heap);
 		}
 
+		/// 获取堆中的最小元素值
 		KeyType Mininum() const
 		{
 			vector<KeyType> values_in_head_list;
@@ -59,6 +70,7 @@ namespace chapter19
 			return *min_element(values_in_head_list.begin(), values_in_head_list.end());
 		}
 
+		/// 弹出二项堆中的最小元素，并获取该最小元素的值
 		KeyType ExtractMinium()
 		{
 			vector<BinomialHeapNode *> head_nodes;
@@ -96,7 +108,7 @@ namespace chapter19
 				head_nodes[min_index - 1]->Sibling = head_nodes[min_index + 1];
 			}
 
-			BinomialHeaps new_head;
+			BinomialHeap new_head;
 			new_head._head_list = min_node->Child;
 			BinomialHeapNode *x = new_head._head_list;
 			while (x)
@@ -110,6 +122,9 @@ namespace chapter19
 			return min_value;
 		}
 
+		/// 对一个结点的值进行缩小操作
+		/// 
+		/// @notes		x结点的新值k必须比x结点的原值小
 		void Decrease(BinomialHeapNode *x, KeyType k)
 		{
 			if (k > x->Key)
@@ -128,16 +143,20 @@ namespace chapter19
 			}
 		}
 
+		/// 删除一个结点
 		void Delete(BinomialHeapNode *node)
 		{
-			Decrease(node, numeric_limits<KeyType>::min());
-			ExtractMinium();
+			if (node)
+			{
+				Decrease(node, numeric_limits<KeyType>::min());
+				ExtractMinium();
+			}
 		}
 		
 		/// 联合另外一个二项堆
 		/// 
 		/// 将另外一个二项堆联合到本二项堆,当联合操作完成之后,other的二项堆中的数据将无效
-		void Union(BinomialHeaps &other)
+		void Union(BinomialHeap &other)
 		{
 			vector<BinomialHeapNode *> nodes;
 			BinomialHeapNode *l = _head_list;
@@ -211,6 +230,9 @@ namespace chapter19
 			}
 		}
 	
+		/// 查找一个值为key的结点
+		/// 
+		/// @notes		所有的堆对查找操作的支持都很差，时间复杂度为O(n)
 		BinomialHeapNode * Search(KeyType key) const
 		{
 			BinomialHeapNode *tree = _head_list;
@@ -228,16 +250,19 @@ namespace chapter19
 			return nullptr;
 		}
 
+		/// 二项堆的当前状态是否为空
 		bool IsEmpty() const
 		{
 			return _head_list == nullptr;
 		}
 
-		BinomialHeapNode const * const GetHeadList() const
+		/// 得到二项堆的根链表
+		BinomialHeapNode * GetHeadList()
 		{
 			return _head_list;
 		}
 
+		/// 使用Grpahviz显示当前二项堆
 		void Display() const
 		{
 			stringstream ss;
@@ -252,7 +277,7 @@ namespace chapter19
 			}			
 			while(node)
 			{
-				_Display(ss, node);
+				_DisplayTree(ss, node);
 
 				if (node->Sibling)
 				{
@@ -267,6 +292,24 @@ namespace chapter19
 		}
 
 	private:
+		/// 清理一棵“二项树”
+		void _DeleteTree(BinomialHeapNode *tree)
+		{
+			if (tree)
+			{
+				BinomialHeapNode *node = tree->Child;
+				while(node)
+				{
+					auto next = node->Sibling;
+					_DeleteTree(node);
+					node = next;
+				}
+
+				delete tree;
+			}
+		}
+
+		/// 将D(k-1)度的y结点连接到D(k-1)度的z接点上去，使得z成为一个D(k)度的结点
 		void _Link(BinomialHeapNode *y, BinomialHeapNode *z)
 		{
 			y->Parent = z;
@@ -274,6 +317,8 @@ namespace chapter19
 			z->Child = y;
 			++z->Degree;
 		}
+
+		/// 在一棵二项树中搜索某个结点
 		BinomialHeapNode * _SearchInTree(BinomialHeapNode *tree, KeyType key) const
 		{
 			if (tree->Key == key)
@@ -295,8 +340,8 @@ namespace chapter19
 			return nullptr;
 		}
 
-		//画一棵二项树
-		void _Display(stringstream &ss, BinomialHeapNode *tree) const
+		/// 画一棵二项树
+		void _DisplayTree(stringstream &ss, BinomialHeapNode *tree) const
 		{
 			if (tree)
 			{
@@ -312,32 +357,32 @@ namespace chapter19
 
 					for_each(childs.begin(), childs.end(), [&](BinomialHeapNode *c){
 						ss << "    " << c->Key << " -> " << tree->Key << ";" << endl;
-						_Display(ss, c);
+						_DisplayTree(ss, c);
 					});
 				}
 			}
 		}
 
 	private:
-		BinomialHeapNode *_head_list;			//根表
+		BinomialHeapNode *_head_list;			///< 根链表
 	};
 
 
 	void testBinomialHeaps()
 	{
 		cout << "二项堆" << endl;
-		BinomialHeaps<int> bh;
+		BinomialHeap<int> bh;
 		for (int i = 0; i < 10; ++i)
 		{
 			bh.Insert(rand() % 100);
 		}
-		bh.Display();
+		//bh.Display();
 
 		while (!bh.IsEmpty())
 		{
 			cout << bh.ExtractMinium() << "\t";
 		}
-		bh.Display();
+		//bh.Display();
 
 		for (int i = 0; i < 64; ++i)
 		{
@@ -347,9 +392,12 @@ namespace chapter19
 				bh.Insert(r);
 			}			
 		}
-		bh.Display();
+		//bh.Display();
 
-		bh.Delete(const_cast<BinomialHeaps<int>::BinomialHeapNode *>(bh.GetHeadList()));
-		bh.Display();
+		for (int i = 0; i < 100; ++i)
+		{
+			bh.Delete(bh.Search(i));
+		}
+		//bh.Display();
 	}
 }
