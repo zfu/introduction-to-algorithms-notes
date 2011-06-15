@@ -103,7 +103,7 @@ namespace chapter26
 
 int _tmain( int argc, _TCHAR* argv[] )
 {
-    chapter19::testBinomialHeaps();
+    chapter23::Kruskal();
     return 0;
 }
 

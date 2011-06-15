@@ -118,16 +118,16 @@ namespace chapter22
 
 
 	/// 使用邻接矩阵来表示一个图
-	template<typename VT, typename ET>
+	template<typename VertexType, typename WeightType>
 	class GrpahicsViaAdjacencyMatrix
 	{
 	public:
-		GrpahicsViaAdjacencyMatrix(vector<VT> const &v, GraphicsType type = Digraph) : _v(v), _e(v.size(), vector<ET>(v.size())), _type(type)
+		GrpahicsViaAdjacencyMatrix(vector<VertexType> const &v, GraphicsType type = Digraph) : _v(v), _e(v.size(), vector<WeightType>(v.size())), _type(type)
 		{
 
 		}
 
-		void Link2Vertex(size_t index1, size_t index2, ET weight)
+		void Link2Vertex(size_t index1, size_t index2, WeightType weight)
 		{
 			_e[index1][index2] = weight;
 			if (_type == Undigraph)
@@ -139,18 +139,18 @@ namespace chapter22
 		/// 查询两个顶点是否连接
 		bool IsLinked(size_t index1, size_t index2) const
 		{
-			return _e[index1][index2] != ET();
+			return _e[index1][index2] != WeightType();
 		}
 
-		inline vector<VT> & GetVertex()			{return _v;}
-		inline vector<vector<ET>> & GetEdge()	{return _e;}
+		inline vector<VertexType> & GetVertex()			{return _v;}
+		inline vector<vector<WeightType>> & GetEdge()	{return _e;}
 
 
 	
 	private:
-		vector<VT>				_v;		///< 图的顶点的集合
-		vector<vector<ET>>		_e;		///< 图的边，即邻接矩阵
-		GraphicsType			_type;	///< 图的类型
+		vector<VertexType>				_v;		///< 图的顶点的集合
+		vector<vector<WeightType>>		_e;		///< 图的边，即邻接矩阵
+		GraphicsType					_type;	///< 图的类型
 	};
 
 }
