@@ -10,9 +10,9 @@
 #include "graphics.h"
 
 using namespace std;
-using namespace chapter22;
 
-namespace chapter25
+
+namespace ita
 {
     void FloydWarshall()
     {

@@ -13,9 +13,9 @@
 #include "bellman_ford.h"
 
 using namespace std;
-using namespace chapter22;
 
-namespace chapter24
+
+namespace ita
 {
 	template<typename T>
 	void Dijkstra(GraphicsViaAdjacencyList<T> &g, int start_index, vector<int> &d, vector<int> &parent_index)

@@ -26,7 +26,7 @@
 using namespace std;
 
 
-namespace chapter11
+namespace ita
 {
 	/// 全域散列表
 	/// 
@@ -163,7 +163,7 @@ namespace chapter11
 
 
 
-	int test()
+	int testHashTable()
 	{		
 		UniversalHashTable<int> table;
 		cout << "开始往UniversalHashTable里添加内容[0,100)：" << endl;

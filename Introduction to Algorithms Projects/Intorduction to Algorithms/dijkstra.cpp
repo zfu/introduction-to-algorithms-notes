@@ -13,9 +13,9 @@
 #include "dijkstra.h"
 
 using namespace std;
-using namespace chapter22;
 
-namespace chapter24
+
+namespace ita
 {
 	void testDijkstra()
 	{

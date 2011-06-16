@@ -12,9 +12,9 @@
 #include "graphics.h"
 
 using namespace std;
-using namespace chapter22;
 
-namespace chapter26
+
+namespace ita
 {
     /// µÃµ½²ĞÁôÍøÂç
     GrpahicsViaAdjacencyMatrix<string, int> GetResidualNetwork( GrpahicsViaAdjacencyMatrix<string, int> &g, vector<vector<int>> &f )

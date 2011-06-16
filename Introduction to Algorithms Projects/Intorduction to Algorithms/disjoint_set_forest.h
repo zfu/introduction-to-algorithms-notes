@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-namespace chapter21
+namespace ita
 {
 
 	/// 用于不相交集合的数据结构（并查集）

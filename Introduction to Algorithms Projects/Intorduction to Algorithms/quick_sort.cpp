@@ -25,7 +25,7 @@
 #include <algorithm>
 using namespace std;
 
-namespace chapter7
+namespace ita
 {
 
 	/// 采用了随机取样技术的快速排序
@@ -122,7 +122,7 @@ namespace chapter7
 		}
 	}
 
-	int test()
+	int testQuickSort()
 	{
 		cout << "==========================快速排序=============================" << endl;
 		vector<int> ToSort;

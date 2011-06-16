@@ -13,9 +13,8 @@
 #include "bellman_ford.h"
 
 using namespace std;
-using namespace chapter22;
 
-namespace chapter24
+namespace ita
 {
 
 	bool testBellmanFord()

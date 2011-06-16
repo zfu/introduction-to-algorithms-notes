@@ -23,7 +23,7 @@
 #include <iterator>
 using namespace std;
 
-namespace chapter8
+namespace ita
 {
 	/// 计数排序
 	void counting_sort()
@@ -130,7 +130,7 @@ namespace chapter8
 		copy(v.begin(), v.end(), ostream_iterator<double>(cout, "  "));
 	}
 
-	int test()
+	int testLinearSort()
 	{
 		cout << endl << "===========开始计数排序===========" << endl;
 		counting_sort();

@@ -26,7 +26,7 @@
 #include <iterator>
 using namespace std;
 
-namespace chapter15
+namespace ita
 {
 
 	namespace	//ÄäÃûÃüÃû¿Õ¼ä

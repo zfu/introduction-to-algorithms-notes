@@ -8,7 +8,7 @@
 #include "graphviz_shower.h"
 using namespace std;
 
-namespace chapter18
+namespace ita
 {
 	/// B树中的一个结点
     struct BTreeNode
@@ -465,7 +465,7 @@ namespace chapter18
     };
 
 
-	void test()
+	void testBTree()
 	{
 		BTree btree(3);
 

@@ -25,7 +25,7 @@
 #include <limits>
 using namespace std;
 
-namespace chapter12
+namespace ita
 {
 	/// 二叉查找树
 	class BinarySearchTree
@@ -245,7 +245,7 @@ namespace chapter12
 
 
 
-	int test()
+	int testBinarySearchTree()
 	{
 		BinarySearchTree bst;
 		//用随机值生成一棵二叉查找树

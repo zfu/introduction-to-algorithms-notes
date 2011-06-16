@@ -23,7 +23,7 @@
 #include <iterator>
 using namespace std;
 
-namespace chapter9
+namespace ita
 {
 	/// 寻找v数组的子集的第i个顺序统计量
 	/// 
@@ -74,7 +74,7 @@ namespace chapter9
 		return _NthElement(v, 0, v.size() - 1, n);
 	}
 
-	int test()
+	int testNthElement()
 	{
 		vector<int> v;
 		for (int i = 0; i < 10; ++i)

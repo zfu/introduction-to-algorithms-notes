@@ -26,7 +26,7 @@
 #include <fstream>
 using namespace std;
 
-namespace chapter15
+namespace ita
 {
 	/// 最优二叉查找树
 	void BestBinarySearchTree()
