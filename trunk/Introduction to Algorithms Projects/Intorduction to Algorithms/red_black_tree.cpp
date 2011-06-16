@@ -27,7 +27,7 @@
 #include "graphviz_shower.h"
 using namespace std;
 
-namespace chapter13
+namespace ita
 {
 /// ºìºÚÊ÷
 template<typename TKey, typename TValue>
@@ -448,7 +448,7 @@ private:
 template<typename TKey, typename TValue>
 typename RBTree<TKey, TValue>::RBTreeNode * RBTree<TKey, TValue>::s_nil = nullptr;
 
-int test()
+int testRedBlackTree()
 {
     int init[] = {11, 2, 14, 1, 7, 15, 5, 8};
     RBTree<int, int> bst;

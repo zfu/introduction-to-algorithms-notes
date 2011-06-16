@@ -27,7 +27,7 @@
 #include <fstream>
 using namespace std;
 
-namespace chapter15
+namespace ita
 {
 	static void Print(vector< vector<int> > const &pos, int i, int j)
 	{

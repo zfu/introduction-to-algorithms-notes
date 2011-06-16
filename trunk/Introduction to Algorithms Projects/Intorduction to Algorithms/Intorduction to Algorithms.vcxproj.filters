@@ -102,6 +102,9 @@
     <ClInclude Include="fibonacci_heap.h">
       <Filter>Chapter20</Filter>
     </ClInclude>
+    <ClInclude Include="priority_queue.h">
+      <Filter>Chapter6</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

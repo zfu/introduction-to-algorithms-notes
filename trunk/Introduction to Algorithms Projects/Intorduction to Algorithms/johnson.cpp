@@ -12,10 +12,10 @@
 #include "dijkstra.h"
 
 using namespace std;
-using namespace chapter22;
-using namespace chapter24;
 
-namespace chapter25
+
+
+namespace ita
 {
 	void Johnson()
 	{

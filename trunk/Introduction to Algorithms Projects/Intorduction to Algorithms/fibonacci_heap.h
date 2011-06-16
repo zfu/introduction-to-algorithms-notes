@@ -22,7 +22,7 @@
 #include <string>
 using namespace std;
 
-namespace chapter20
+namespace ita
 {
 
     typedef unsigned int uint;

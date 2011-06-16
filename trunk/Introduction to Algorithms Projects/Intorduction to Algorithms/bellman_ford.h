@@ -12,9 +12,9 @@
 #include "graphics.h"
 
 using namespace std;
-using namespace chapter22;
 
-namespace chapter24
+
+namespace ita
 {
 	template<typename T>
 	void InitializeSingleSource(GraphicsViaAdjacencyList<T> &g, vector<int> &d, vector<int> &parent_index, int start_index)

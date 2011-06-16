@@ -7,7 +7,7 @@
 #include "graphviz_shower.h"
 using namespace std;
 
-namespace chapter19
+namespace ita
 {
 	/// ¶şÏî¶Ñ
 	template<typename KeyType>

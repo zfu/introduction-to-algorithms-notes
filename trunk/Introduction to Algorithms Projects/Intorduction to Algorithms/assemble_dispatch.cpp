@@ -26,7 +26,7 @@
 #include <fstream>
 using namespace std;
 
-namespace chapter15
+namespace ita
 {
 	/// 装配线调度问题
 	void AssembleDispatch()

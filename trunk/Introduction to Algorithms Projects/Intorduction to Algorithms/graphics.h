@@ -9,7 +9,7 @@
 #include <utility>
 using namespace std;
 
-namespace chapter22
+namespace ita
 {
 	/// 图的类型：有向图还是无向图
 	enum GraphicsType : short

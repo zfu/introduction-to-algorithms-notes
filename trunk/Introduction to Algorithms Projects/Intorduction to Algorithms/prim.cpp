@@ -13,9 +13,8 @@
 #include "graphics.h"
 
 using namespace std;
-using namespace chapter22;
 
-namespace chapter23
+namespace ita
 {
 	void Prim()
 	{

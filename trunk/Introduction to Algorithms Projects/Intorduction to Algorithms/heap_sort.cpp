@@ -20,9 +20,10 @@
 #include <vector>
 #include <algorithm>
 #include <iterator>
+#include "priority_queue.h"
 using namespace std;
 
-namespace chapter6
+namespace ita
 {
 
 
@@ -82,121 +83,40 @@ void HeapSort(vector<int> &to_sort)
 }
 
 
-/// 优先队列
-/// 
-/// 堆的主要应用之一：优先队列
-class PriorityQueue
-{
-public:
-	PriorityQueue()
-	{
-		int to_init[] = {8,5,78,45,64,987,45,34,23,4,23};
-		_queue.assign(to_init, to_init + sizeof(to_init) / sizeof(int));
-		BuildHeap(_queue);
-	}
-
-	int GetMaxPriority()
-	{
-		return _queue[0];
-	}
-
-	int GetAndPopMaxPriority()
-	{
-		int max_priority = GetMaxPriority();
-
-		std::swap(_queue[0], _queue[_queue.size() - 1]);
-		_queue.erase(_queue.end() - 1);
-		MakeHeap(_queue, _queue.size(), 0);
-
-		return max_priority;
-	}
-
-	void ChangePriority(int index, int new_priority)
-	{
-		if (_queue[index] == new_priority)
-		{//优先级不变，直接返回
-			return;
-		}
-
-		if (_queue[index] > new_priority)
-		{//降底优先级
-			_queue[index] = new_priority;
-			MakeHeap(_queue, _queue.size(), index);
-		}
-		else
-		{//提升优先级			
-			_queue[index] = new_priority;
-			while(index > 0)
-			{
-				int parent_index = static_cast<int>((index + 1) / 2) - 1;
-
-				if (_queue[parent_index] < _queue[index])
-				{
-					std::swap(_queue[parent_index], _queue[index]);
-					index = parent_index;
-				}
-				else
-				{
-					break;
-				}			
-			}
-		}
-	}
-
-	void Insert(int priority)
-	{
-		_queue.push_back(std::numeric_limits<int>::min());
-		ChangePriority(_queue.size() - 1, priority);
-	}
-
-	bool IsEmpty()
-	{
-		return _queue.empty();
-	}
-
-	void Display()
-	{
-		copy(_queue.begin(), _queue.end(), ostream_iterator<int>(cout, "  "));
-		cout << endl;
-	}
-
-private:
-	vector<int> _queue;
-};
-
-
-
-int test()
+int testHeapSort()
 {
 	int to_init[] = {8,5,78,45,64,987,45,34,23,4,23};
 	vector<int> to_sort(to_init, to_init + sizeof(to_init) / sizeof(int));
 	cout << "原始数组，准备进行堆排序：";
 	copy(to_sort.begin(), to_sort.end(), ostream_iterator<int>(cout, "  "));
 	HeapSort(to_sort);
-	//reverse(result.begin(), result.end());
 	cout << endl << "堆排序结束：";
 	copy(to_sort.begin(), to_sort.end(), ostream_iterator<int>(cout, "  "));
-	cout << endl;
+	cout << endl << endl;
 
 	cout << "初始化一个优先队列：";
-	PriorityQueue queue;
+	PriorityQueue<int, greater<int>> queue;
+	for (int i = 0; i < 10; ++i)
+	{
+		queue.Push(rand() % 1000);
+	}
 	queue.Display();
+
 	cout << "开始不断的取最高优先级的任务出列：" << endl;
 	while(!queue.IsEmpty())
 	{
-		cout << queue.GetAndPopMaxPriority() << ":\t";
+		cout << queue.Top() << ":\t";
+		queue.Pop();
 		queue.Display();
 	}
 
 	cout << "开始添加任务入列：" << endl;
 	for (size_t i = 0; i < to_sort.size(); ++i)
 	{
-		queue.Insert(to_sort[i]);
+		queue.Push(to_sort[i]);
 		queue.Display();
 	}
 
-	cout << "更改一个任务的优先级：任务2优先级调整为-9并自动调整堆：" << endl;
-	queue.ChangePriority(2, -9);
 	queue.Display();
 
 	return 0;

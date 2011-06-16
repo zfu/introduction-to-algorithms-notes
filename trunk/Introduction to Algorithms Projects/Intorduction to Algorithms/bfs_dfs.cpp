@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace chapter22
+namespace ita
 {
 	/// 广度优先遍历
 	template<typename T>

@@ -13,7 +13,7 @@
 using namespace std;
 
 
-namespace chapter22
+namespace ita
 {
 	template<typename T>
 	vector<int> DFS_Visit(GraphicsViaAdjacencyList<T> &g, size_t index, vector<int> &d, vector<int> &f, vector<bool> &traversed, int &time)

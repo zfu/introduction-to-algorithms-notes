@@ -12,10 +12,8 @@
 #include "disjoint_set_forest.h"
 
 using namespace std;
-using namespace chapter22;
-using namespace chapter21;
 
-namespace chapter23
+namespace ita
 {
 	void Kruskal()
 	{

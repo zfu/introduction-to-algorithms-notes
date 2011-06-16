@@ -2,9 +2,9 @@
 #include "disjoint_set_forest.h"
 using namespace std;
 
-namespace chapter21
+namespace ita
 {
-	void test()
+	void testDisjointSetForest()
 	{
 		vector<DisjointSetForest::DisjointSet<int> *> nodes;
 		for (int i = 0; i < 10; ++i)
