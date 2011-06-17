@@ -19,25 +19,25 @@
 namespace ita
 {
 	//第6章：堆排序
-    int testHeapSort();						//堆排序
+	int testHeapSort();						//堆排序
 
 	//第7章：快速排序
-    int testQuickSort();					//快速排序
+	int testQuickSort();					//快速排序
 
 	//第8章：线性时间排序
-    int testLinearSort();					//线性时间排序
+	int testLinearSort();					//线性时间排序
 
 	//第9章：中位数和顺序统计学
-    int testNthElement();					//中位数和顺序统计学
+	int testNthElement();					//中位数和顺序统计学
 
 	//第11章：散列表
-    int testHashTable();					//散列表
+	int testHashTable();					//散列表
 
 	//第12章：二叉查找树
-    int testBinarySearchTree();				//二叉查找树
+	int testBinarySearchTree();				//二叉查找树
 
 	//第13章：红黑树
-    int testRedBlackTree();					//红黑树
+	int testRedBlackTree();					//红黑树
 
 	//第15章：动态规划
 	void AssembleDispatch();				//装配线调度
@@ -88,7 +88,53 @@ namespace ita
 using namespace ita;
 int _tmain( int argc, _TCHAR* argv[] )
 {
-	testDisjointSetForest();
+	//testHeapSort();					
+
+	//testQuickSort();				
+
+	//testLinearSort();				
+
+	//testNthElement();				
+
+	//testHashTable();				
+
+	//testBinarySearchTree();			
+
+	//testRedBlackTree();				
+
+	//AssembleDispatch();			
+	//MatrixListMultiply();			
+	//LongestCommonSubsequence();		
+	//BestBinarySearchTree();		
+	//NeatlyPrint();					
+	//PlanParty();					
+	//BitonicTour();					
+
+	//HuffmanCode();					
+
+	//testBTree();					
+
+	//testBinomialHeaps();			
+
+	//testFibonacciHeap();			
+
+	//testDisjointSetForest();		
+
+	//testBreadthFirstSearch();		
+	//testDeapthFirstSearch();		
+	//TopologicalSort();				
+	//StronglyConnectedComponent();	
+
+	//Kruskal();						
+	//Prim();						
+
+	//testBellmanFord();				
+	//testDijkstra();				
+
+	//FloydWarshall();				
+	//Johnson();						
+
+	//testFordFulkerson();			
     return 0;
 }
 
