@@ -401,13 +401,13 @@ namespace ita
 		{
 			bh.Insert(rand() % 100);
 		}
-		//bh.Display();
+		bh.Display();
 
 		while (!bh.IsEmpty())
 		{
 			cout << bh.ExtractMinium() << "\t";
 		}
-		//bh.Display();
+		bh.Display();
 
 		for (int i = 0; i < 64; ++i)
 		{
@@ -417,12 +417,12 @@ namespace ita
 				bh.Insert(r);
 			}			
 		}
-		//bh.Display();
+		bh.Display();
 
 		for (int i = 0; i < 100; ++i)
 		{
 			bh.Delete(bh.Search(i));
 		}
-		//bh.Display();
+		bh.Display();
 	}
 }
