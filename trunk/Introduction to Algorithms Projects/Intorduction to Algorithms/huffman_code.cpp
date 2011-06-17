@@ -1,3 +1,17 @@
+//////////////////////////////////////////////////////////////////////////  
+/// @file		huffman_code.cpp
+/// @brief		贪心算法：Huffman编码问题
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   15:52	1.0	谭川奇	创建
 
 #include <iostream>
 #include <algorithm>
@@ -41,7 +55,9 @@ namespace ita
         }
     }
 
-    /// 使用贪心算法解决Huffman编码问题
+    /// @brief 使用贪心算法解决Huffman编码问题
+	/// 
+	/// 它的原理就是用不等长的编码来表示不同出现频率的字符。出现频率高的字符，就用比较短的编码来表示，出现频率低的，就是较长的编码来表示。
     void HuffmanCode()
     {
         string orgin_str = "abcadbabacadbacdabadeabadabaewbadsafdsawebadsfasdfababadasdfabababcadb";

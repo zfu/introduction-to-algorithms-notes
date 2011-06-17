@@ -1,20 +1,17 @@
 //////////////////////////////////////////////////////////////////////////  
-///    COPYRIGHT NOTICE  
-///    Copyright (c) 2009
-///    All rights reserved.  
+/// @file		assemble_dispatch.cpp
+/// @brief		装配线调度问题
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
 ///  
-/// @file		assemble_dispatcher.cpp
-/// @brief		assemble_dispatcher.cpp的简短描述 
-///  			
-///  			assemble_dispatcher.cpp的详细描述
-/// 
-/// @author		谭川奇	chuanqi.tan(at)gmail.com 
-/// @date		2011/05/31
-/// @version 	1.0
-///  
-///  
-///    修订说明：最初版本  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
 //////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   14:09	1.0	谭川奇	创建
 
 
 #include <iostream>
@@ -28,7 +25,13 @@ using namespace std;
 
 namespace ita
 {
-	/// 装配线调度问题
+	/// @brief 装配线调度问题
+	/// 
+	/// 某汽车工厂有2个装配线，每个装配线有n 个装配站（按顺序编号1～n ），两个装配线对应的装配站执行相同的功能，但所用的时间可能不同。经过第i条流水线（i=1，2）
+	/// 的第j 个装配站所花的时间为s[i][j]。从第i条流水线的第j 个装配站移到第j+1个装配站的时间可以忽略，而移到另外一个流水线的下一个装配站则需要一定的时间t[i][j]。
+	/// - 汽车进入流水线需要花时间e[i]，出流水线时需要花时间x[i]。
+	/// - 汽车的装配需要按顺序经过所有装配站。
+	/// - 现在已知装配时间s[i][j]和转移时间t[i][j]以及进入时间e[i]、出流水线时间x[i]，要求输出装配一辆汽车所需要的最短时间。 
 	void AssembleDispatch()
 	{
 		int e[] = {2, 4};

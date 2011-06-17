@@ -29,12 +29,12 @@ namespace ita
     int testRedBlackTree();
 
 	//第15章：动态规划
-    void AssembleDispatch();				//装配线调度
-    void MatrixListMultiply();				//矩阵链乘法
-    int LongestCommonSubsequence();			//最长公共子序列
-    void BestBinarySearchTree();			//最优二叉查找树
-    void NeatlyPrint();						//整齐打印
-    void PlanParty();						//聚会计划
+	void AssembleDispatch();				//装配线调度
+	void MatrixListMultiply();				//矩阵链乘法
+	int LongestCommonSubsequence();			//最长公共子序列
+	void BestBinarySearchTree();			//最优二叉查找树
+	void NeatlyPrint();						//整齐打印
+	void PlanParty();						//聚会计划
     void BitonicTour();						//双调旅程
 
 	//第16章：贪心算法
@@ -53,7 +53,8 @@ namespace ita
 	void testDisjointSetForest();
 
 	//第22章：图的基本算法 
-	void BFS_And_DFS();						//广度&深度优先遍历
+	void testBreadthFirstSearch();			//广度优先遍历
+	void testDeapthFirstSearch();			//深度优先遍历
 	void TopologicalSort();					//拓扑排序
 	void StronglyConnectedComponent();		//强连通分支
 
@@ -73,9 +74,10 @@ namespace ita
 	void testFordFulkerson();
 }
 
+using namespace ita;
 int _tmain( int argc, _TCHAR* argv[] )
 {
-    ita::testHeapSort();
+	testDisjointSetForest();
     return 0;
 }
 

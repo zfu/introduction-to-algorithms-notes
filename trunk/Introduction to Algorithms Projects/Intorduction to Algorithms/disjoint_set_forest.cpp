@@ -1,3 +1,18 @@
+//////////////////////////////////////////////////////////////////////////  
+/// @file		disjoint_set_forest.cpp
+/// @brief		用于不相交集合的数据结构（并查集）
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   16:01	1.0	谭川奇	创建
+
 
 #include "disjoint_set_forest.h"
 using namespace std;

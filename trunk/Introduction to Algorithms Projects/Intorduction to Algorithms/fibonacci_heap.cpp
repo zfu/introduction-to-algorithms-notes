@@ -1,11 +1,17 @@
 /**
- * template Fibonacci Heap 
- * 转载自：http://ideone.com/9jYnv
+ * template Fibonacci Heap
  *
  * @ref http://en.wikipedia.org/wiki/Fibonacci_heap
  * @ref http://www.cse.yorku.ca/~aaw/Jason/FibonacciHeapAlgorithm.html
  * @author Erel Segal http://tora.us.fm/rentabrain
  * @date 2010-11-11
+ */
+
+/**
+ * chuanqi.tan(at)gmail.com	引用说明
+ *
+ * 斐波那契堆与二项堆非常类似，就不再自己重新写了。
+ * 这里的代码转载自：http://ideone.com/9jYnv 这种代码的风格非常现代化我非常喜欢，故引用了这份代码
  */
  
 #include <iostream>

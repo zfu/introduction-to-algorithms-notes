@@ -1,3 +1,18 @@
+//////////////////////////////////////////////////////////////////////////  
+/// @file		ford_fulkerson.cpp
+/// @brief		FordFulkerson最大流算法
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   17:43	1.0	谭川奇	创建
+
 #include <vector>
 #include <iostream>
 #include <queue>
@@ -16,6 +31,9 @@ using namespace std;
 
 namespace ita
 {
+	namespace 
+	{
+
     /// 得到残留网络
     GrpahicsViaAdjacencyMatrix<string, int> GetResidualNetwork( GrpahicsViaAdjacencyMatrix<string, int> &g, vector<vector<int>> &f )
     {
@@ -85,6 +103,8 @@ namespace ita
 
         return path;
     }
+
+	}
 
     /// FordFulkerson最大流算法
     int FordFulkerson( GrpahicsViaAdjacencyMatrix<string, int> &g )

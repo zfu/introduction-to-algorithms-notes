@@ -1,4 +1,19 @@
 #pragma once
+//////////////////////////////////////////////////////////////////////////  
+/// @file		dijkstra.h
+/// @brief		Dijstra最短路径
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   17:39	1.0	谭川奇	创建
+
 
 #include <vector>
 #include <iostream>
@@ -17,6 +32,7 @@ using namespace std;
 
 namespace ita
 {
+	/// Dijstra最短路径
 	template<typename T>
 	void Dijkstra(GraphicsViaAdjacencyList<T> &g, int start_index, vector<int> &d, vector<int> &parent_index)
 	{

@@ -1,3 +1,18 @@
+//////////////////////////////////////////////////////////////////////////  
+/// @file		binomial_heaps.cpp
+/// @brief		二项堆
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   15:47	1.0	谭川奇	创建
+
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -9,7 +24,16 @@ using namespace std;
 
 namespace ita
 {
-	/// 二项堆
+	/// @brief 二项堆
+	/// 
+	/// 二项堆是由<b>一组</b>满足下面的<b>二项树</b>组成：\n	
+	/// - H中的每个二项树遵循<span style="color:#FF0000 ">最小堆性质：结点的关键字大于或等于其父结点的关键字</span>。我们说这种树是最小堆有序的。
+	/// - 对于任意的整数k的话，在H不存在另外一个度数也是k的二项树；即<span style="color:#FF0000 ">至多</span>（有0或1棵）有一棵二项树的根具有度数K。
+	/// 
+	/// 第一个性质保证了二项树的根结点包含了最小的关键字。第二个性质则说明结点数为n的二项堆最多只有logn + 1棵二项树。\n
+	/// 二项树是一种递归的定义:\n
+	/// - 二项树B[0]仅仅包含一个节点
+	/// - B[k]是由两棵B[k-1]二项树组成，其中一颗树是另外一颗树的子树。
 	template<typename KeyType>
 	class BinomialHeap
 	{
@@ -122,9 +146,9 @@ namespace ita
 			return min_value;
 		}
 
-		/// 对一个结点的值进行缩小操作
+		/// @brief 对一个结点的值进行缩小操作
 		/// 
-		/// @notes		x结点的新值k必须比x结点的原值小
+		/// @note		x结点的新值k必须比x结点的原值小
 		void Decrease(BinomialHeapNode *x, KeyType k)
 		{
 			if (k > x->Key)
@@ -153,7 +177,7 @@ namespace ita
 			}
 		}
 		
-		/// 联合另外一个二项堆
+		/// @brief 联合另外一个二项堆
 		/// 
 		/// 将另外一个二项堆联合到本二项堆,当联合操作完成之后,other的二项堆中的数据将无效
 		void Union(BinomialHeap &other)
@@ -230,9 +254,9 @@ namespace ita
 			}
 		}
 	
-		/// 查找一个值为key的结点
+		/// @brief 查找一个值为key的结点
 		/// 
-		/// @notes		所有的堆对查找操作的支持都很差，时间复杂度为O(n)
+		/// @note		所有的堆对查找操作的支持都很差，时间复杂度为O(n)
 		BinomialHeapNode * Search(KeyType key) const
 		{
 			BinomialHeapNode *tree = _head_list;

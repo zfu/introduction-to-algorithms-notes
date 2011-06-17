@@ -1,4 +1,17 @@
-
+//////////////////////////////////////////////////////////////////////////  
+/// @file		dijkstra.cpp
+/// @brief		Dijstra×î¶ÌÂ·¾¶
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		Ì·´¨Ææ	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// ÐÞ¸Ä¼ÇÂ¼£º
+/// 2011/06/17   17:39	1.0	Ì·´¨Ææ	´´½¨
 
 #include <vector>
 #include <iostream>

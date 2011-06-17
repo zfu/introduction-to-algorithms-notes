@@ -1,19 +1,17 @@
 //////////////////////////////////////////////////////////////////////////  
-///    COPYRIGHT NOTICE  
-///    Copyright (c) 2009
-///    All rights reserved.  
+/// @file		heap_sort.cpp
+/// @brief		堆的使用与堆排序
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    	
 ///  
-/// @file		HeapSort.cpp  
-/// @brief		堆排序的学习，使用大头堆  
-///  
-///  
-/// @author		谭川奇	chuanqi.tan@gmail.com
-/// @date		2011-5-25
-///  
-///  
-///    修订说明：最初版本  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
 //////////////////////////////////////////////////////////////////////////  
-
+/// 修改记录：
+/// 2011/06/17   10:18	1.0	谭川奇	创建
 
 
 #include <iostream>
@@ -27,14 +25,14 @@ namespace ita
 {
 
 
-/// 保持堆的性质
+/// @brief 保持堆的性质
 /// 
 /// 将to_make的[0,length)元素视为一棵完全二叉树，以第i个元素为根的子树除了第i个元素之外都满足大堆的性质
 /// 调用此方法之后，这棵完全二叉树以第i个元素为根的子树都满足大堆的性质
-/// @to_make	保存数据的数组
-/// @length		标记to_make的[0,length)元素视为一个完全二叉树
-///				第length个元素之后[length, n)的元素不包括在这棵完全二叉树里
-/// @i			需要处理的第i个元素
+/// @param	to_make	保存数据的数组
+/// @param	length		标记to_make的[0,length)元素视为一个完全二叉树<br/>
+///						第length个元素之后[length, n)的元素不包括在这棵完全二叉树里
+/// @param	i			需要处理的第i个元素
 /// @note		to_make的前length个元素并不一定是一个堆（因为它不满足大堆的性质），但可以映射为完全二叉树
 void MakeHeap(vector<int> &to_make, size_t length, size_t i)
 {
@@ -58,7 +56,7 @@ void MakeHeap(vector<int> &to_make, size_t length, size_t i)
 	}
 }
 
-/// 建堆
+/// @brief 建堆
 /// 
 /// 将to_built数组改建成一个大头堆
 void BuildHeap(vector<int> &to_built)
@@ -82,7 +80,7 @@ void HeapSort(vector<int> &to_sort)
 	}
 }
 
-
+/// 测试 堆排序与优先队列 的实现
 int testHeapSort()
 {
 	int to_init[] = {8,5,78,45,64,987,45,34,23,4,23};

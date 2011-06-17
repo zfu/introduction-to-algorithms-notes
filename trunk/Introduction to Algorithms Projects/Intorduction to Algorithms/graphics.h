@@ -1,8 +1,18 @@
 #pragma once
-/// 图的表示法
-/// 
-/// 图的两种表示方法：（1）邻接表法；（2）邻接矩阵法
-/// 
+//////////////////////////////////////////////////////////////////////////  
+/// @file		graphics.h
+/// @brief		图的两种表示方法：（1）邻接表法；（2）邻接矩阵法
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   16:02	1.0	谭川奇	创建
 
 
 #include <vector>
@@ -71,7 +81,7 @@ namespace ita
 			}
 		}
 
-		/// 查询两个顶点是否连接
+		/// @brief 查询两个顶点是否连接
 		/// 
 		/// 返回两个顶点是否相连，同时还返回该条边的权值。如果不相连，就返回<false, 0>，这里的权值无意义
 		pair<bool, AdjacencyListNode *> IsLinked(size_t index1, size_t index2) const
@@ -88,9 +98,13 @@ namespace ita
 			return make_pair(false, nullptr);
 		}
 
+		/// 返回所有的顶点
 		inline vector<T> & GetVertex()				{return _v;}
+
+		/// 返回所有的边的邻接表
 		inline vector<AdjacencyListNode *> & GetEdges()	{return _e;}
 
+		/// 返回所有的边的编号值对
 		vector<pair<size_t, size_t>> GetAllEdges()
 		{
 			vector<pair<size_t, size_t>> edges;
@@ -127,6 +141,7 @@ namespace ita
 
 		}
 
+		/// 标识两个顶点之间有一条权值为weight的边
 		void Link2Vertex(size_t index1, size_t index2, WeightType weight)
 		{
 			_e[index1][index2] = weight;
@@ -142,7 +157,9 @@ namespace ita
 			return _e[index1][index2] != WeightType();
 		}
 
+		/// 返回所有的顶点
 		inline vector<VertexType> & GetVertex()			{return _v;}
+		/// 返回所有的边
 		inline vector<vector<WeightType>> & GetEdge()	{return _e;}
 
 
