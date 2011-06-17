@@ -1,5 +1,17 @@
-/// 强连通分支
-
+//////////////////////////////////////////////////////////////////////////  
+/// @file		strongly_connected_component.cpp
+/// @brief		强连通分支
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   16:03	1.0	谭川奇	创建
 
 
 #include <vector>
@@ -9,36 +21,14 @@
 #include <iterator>
 #include <bitset>
 #include "graphics.h"
+#include "deapth_first_search.h"
 
 using namespace std;
 
 
 namespace ita
 {
-	template<typename T>
-	vector<int> DFS_Visit(GraphicsViaAdjacencyList<T> &g, size_t index, vector<int> &d, vector<int> &f, vector<bool> &traversed, int &time)
-	{
-		vector<int> this_time_traversed;
-		this_time_traversed.push_back(index);
-		traversed[index] = true;
-		++time;
-		d[index] = time;
-
-		for (size_t i = 0; i < g.GetVertex().size(); ++i)
-		{
-			if (!traversed[i] && g.IsLinked(index, i).first)
-			{
-				vector<int> v = DFS_Visit(g, i, d, f, traversed, time);
-				this_time_traversed.insert(this_time_traversed.end(), v.begin(), v.end());
-			}
-		}
-
-		++time; 
-		f[index] = time;
-		return this_time_traversed;
-	}
-
-
+	/// 寻找强连通分支问题
 	void StronglyConnectedComponent()
 	{
 		cout << "强连接分支" << endl;

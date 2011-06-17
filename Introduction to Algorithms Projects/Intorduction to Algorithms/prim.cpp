@@ -1,4 +1,17 @@
-/// Prim最小生成树算法
+//////////////////////////////////////////////////////////////////////////  
+/// @file		prim.cpp
+/// @brief		Prim最小生成树算法
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   17:00	1.0	谭川奇	创建
 
 
 
@@ -16,6 +29,7 @@ using namespace std;
 
 namespace ita
 {
+	/// Prim最小生成树算法
 	void Prim()
 	{
 		cout << "Prim最小生成树" << endl;

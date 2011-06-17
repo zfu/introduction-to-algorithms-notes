@@ -1,3 +1,18 @@
+//////////////////////////////////////////////////////////////////////////  
+/// @file		disjoint_set_forest.h
+/// @brief		用于不相交集合的数据结构（并查集）
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   15:56	1.0	谭川奇	创建
+
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -5,7 +20,12 @@ using namespace std;
 namespace ita
 {
 
-	/// 用于不相交集合的数据结构（并查集）
+	/// @brief 采用树表示法实现的 用于不相交集合的数据结构（并查集）
+	/// 
+	/// 使用了“路径压缩”和“按秩合并”两种技术来加速并查集的运行时间。\n
+	/// 这种方法实现的并查集的运行时间在实践上是线性的，但从理论上来说是超线性的。\n
+	/// 用于不相交集合的数据结构又称为查并集：在很多的应用中（比如图的算法中经常使用，还有哈夫曼编码等），将N个不同的元素分成一组不相交的集合。\n
+	/// 不相交集合上有两个重要的操作：<span style="color:#FF0000 ">找出给定元素所属的集合</span> 和 <span style="color:#FF0000 ">合并两个集合</span>。
 	class DisjointSetForest
 	{
 	public:
@@ -67,6 +87,7 @@ namespace ita
 				x->Parent = y;
 			}
 
+			//按秩合并
 			if (x->Rank == y->Rank)
 			{//只有在秩相同时才会将最后的根结点的秩+1
 				++(y->Rank);

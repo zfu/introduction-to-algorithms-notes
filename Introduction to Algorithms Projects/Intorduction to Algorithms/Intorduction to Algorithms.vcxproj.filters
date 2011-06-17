@@ -84,9 +84,6 @@
     <ClInclude Include="graphviz_shower.h">
       <Filter>Tools</Filter>
     </ClInclude>
-    <ClInclude Include="binomial_heaps.h">
-      <Filter>Chapter19</Filter>
-    </ClInclude>
     <ClInclude Include="graphics.h">
       <Filter>Chapter22</Filter>
     </ClInclude>
@@ -104,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="priority_queue.h">
       <Filter>Chapter6</Filter>
+    </ClInclude>
+    <ClInclude Include="deapth_first_search.h">
+      <Filter>Chapter22</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -173,9 +173,6 @@
     <ClCompile Include="topological_sort.cpp">
       <Filter>Chapter22</Filter>
     </ClCompile>
-    <ClCompile Include="bfs_dfs.cpp">
-      <Filter>Chapter22</Filter>
-    </ClCompile>
     <ClCompile Include="kruskal.cpp">
       <Filter>Chapter23</Filter>
     </ClCompile>
@@ -197,11 +194,17 @@
     <ClCompile Include="ford_fulkerson.cpp">
       <Filter>Chapter26</Filter>
     </ClCompile>
-    <ClCompile Include="binomial_heaps_myself.cpp">
-      <Filter>Chapter19</Filter>
-    </ClCompile>
     <ClCompile Include="fibonacci_heap.cpp">
       <Filter>Chapter20</Filter>
+    </ClCompile>
+    <ClCompile Include="binomial_heaps.cpp">
+      <Filter>Chapter19</Filter>
+    </ClCompile>
+    <ClCompile Include="breadth_first_search.cpp">
+      <Filter>Chapter22</Filter>
+    </ClCompile>
+    <ClCompile Include="deapth_first_search.cpp">
+      <Filter>Chapter22</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

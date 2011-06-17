@@ -77,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="bellman_ford.h" />
-    <ClInclude Include="binomial_heaps.h" />
+    <ClInclude Include="deapth_first_search.h" />
     <ClInclude Include="dijkstra.h" />
     <ClInclude Include="disjoint_set_forest.h" />
     <ClInclude Include="fibonacci_heap.h" />
@@ -91,11 +91,12 @@
     <ClCompile Include="assemble_dispatch.cpp" />
     <ClCompile Include="bellman_ford.cpp" />
     <ClCompile Include="best_binary_search_tree.cpp" />
-    <ClCompile Include="bfs_dfs.cpp" />
+    <ClCompile Include="breadth_first_search.cpp" />
     <ClCompile Include="binary_search_tree.cpp" />
-    <ClCompile Include="binomial_heaps_myself.cpp" />
+    <ClCompile Include="binomial_heaps.cpp" />
     <ClCompile Include="bitonic_tour.cpp" />
     <ClCompile Include="B_tree.cpp" />
+    <ClCompile Include="deapth_first_search.cpp" />
     <ClCompile Include="dijkstra.cpp" />
     <ClCompile Include="disjoint_set_forest.cpp" />
     <ClCompile Include="fibonacci_heap.cpp" />

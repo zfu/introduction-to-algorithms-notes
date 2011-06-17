@@ -1,4 +1,18 @@
 #pragma once
+//////////////////////////////////////////////////////////////////////////  
+/// @file		bellman_ford.h
+/// @brief		Bellman-Ford最短路径算法
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   17:40	1.0	谭川奇	创建
 
 #include <vector>
 #include <iostream>
@@ -16,28 +30,32 @@ using namespace std;
 
 namespace ita
 {
-	template<typename T>
-	void InitializeSingleSource(GraphicsViaAdjacencyList<T> &g, vector<int> &d, vector<int> &parent_index, int start_index)
+	namespace 
 	{
-		for (size_t i = 0; i < g.GetVertex().size(); ++i)
+		/// 初始化
+		template<typename T>
+		void InitializeSingleSource(GraphicsViaAdjacencyList<T> &g, vector<int> &d, vector<int> &parent_index, int start_index)
 		{
-			d[i] = numeric_limits<int>::max();
-			parent_index[i] = -1;
+			for (size_t i = 0; i < g.GetVertex().size(); ++i)
+			{
+				d[i] = numeric_limits<int>::max();
+				parent_index[i] = -1;
+			}
+			d[start_index] = 0;
 		}
-		d[start_index] = 0;
-	}
 
-	/// 松弛
-	/// 
-	/// 前提条件是：index1->index2存在着一条边
-	/// 因此用index1的这条边来松弛index2的d值，并且设置parent[index2] = index1
-	template<typename T>
-	void Relax(GraphicsViaAdjacencyList<T> &g, vector<int> &d, vector<int> &parent_index, int index1, int index2)
-	{
-		if (d[index2] > d[index1] + g.IsLinked(index1, index2).second->Weight)
+		/// 松弛
+		/// 
+		/// 前提条件是：index1->index2存在着一条边
+		/// 因此用index1的这条边来松弛index2的d值，并且设置parent[index2] = index1
+		template<typename T>
+		void Relax(GraphicsViaAdjacencyList<T> &g, vector<int> &d, vector<int> &parent_index, int index1, int index2)
 		{
-			d[index2] = d[index1] + g.IsLinked(index1, index2).second->Weight;
-			parent_index[index2] = index1;
+			if (d[index2] > d[index1] + g.IsLinked(index1, index2).second->Weight)
+			{
+				d[index2] = d[index1] + g.IsLinked(index1, index2).second->Weight;
+				parent_index[index2] = index1;
+			}
 		}
 	}
 

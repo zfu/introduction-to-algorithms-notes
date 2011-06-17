@@ -1,3 +1,17 @@
+//////////////////////////////////////////////////////////////////////////  
+/// @file		plan_party.cpp
+/// @brief		聚会规划问题
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
+///  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
+//////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   14:34	1.0	谭川奇	创建
 
 #include <iostream>
 #include <algorithm>
@@ -54,7 +68,7 @@ namespace ita
 		}
 	}
 
-	/// 聚会规划
+	/// 聚会规划问题
 	void PlanParty()
 	{
 		Human *root = new Human("TCQ", 4);		//总裁结点

@@ -1,21 +1,17 @@
 //////////////////////////////////////////////////////////////////////////  
-///    COPYRIGHT NOTICE  
-///    Copyright (c) 2009
-///    All rights reserved.  
-///  
 /// @file		quick_sort.cpp
-/// @brief		quick_sort.cpp的简短描述 
-///  			
-///  			quick_sort.cpp的详细描述
-/// 
-/// @author		谭川奇	chuanqi.tan@gmail.com 
-/// @date		2011/05/26
-/// @version 	1.0
+/// @brief		快速排序
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    实现了快速排序算法以及《算法导论》7-6题的“对模糊区间的快速排序
 ///  
-///  
-///    修订说明：最初版本  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
 //////////////////////////////////////////////////////////////////////////  
-
+/// 修改记录：
+/// 2011/06/17   10:30	1.0	谭川奇	创建
 
 
 #include <vector>
@@ -28,7 +24,7 @@ using namespace std;
 namespace ita
 {
 
-	/// 采用了随机取样技术的快速排序
+	/// @brief 采用了随机取样技术的快速排序
 	/// 
 	/// 快速排序的平均效率为O(nlgn)，最坏情况为O(n^2)
 	void QuickSort(vector<int> &ToSort, int BeginIndex, int EndIndex)
@@ -41,7 +37,7 @@ namespace ita
 			std::swap(ToSort[random_swap], ToSort[EndIndex]);
 
 			//i代表的是比ToSort[EndIndex]小的元素的上界，即ToSort[0...i)的元素值都比ToSort[EndIndex]要小
-			//也意味着下一个比ToSort[EndIndex]小的元素要放置的位置；但是在当前ToSort[i] >= ToSort[EndIndex]
+			//也意味着下一个比ToSort[EndIndex]小的元素要放置的位置；但是在当前可能ToSort[i] >= ToSort[EndIndex]
 			int i = BeginIndex;
 
 			//j代表已经检查过的元素的上界
@@ -62,18 +58,18 @@ namespace ita
 	}
 
 
-	/// 对模糊区间的快速排序
+	/// @brief 对模糊区间的快速排序
 	/// 
 	/// 问题描述： （算法导论7-6题）\n
 	/// 考虑这样的一种排序问题，即无法准确地知道待排序的各个数字到底是多少。对于其中的每个数字， 
 	/// 我们只知道它落在实轴上的某个区间内。亦即，给定的是n个形如[a(i), b(i)]的闭区间（这里小括 
 	/// 后起下标的作用，后同），其中a(i) <= b(i)。算法的目标是对这些区间进行模糊排序 
 	/// （fuzzy-sort），亦即，产生各区间的一个排列<i(1), i(2), ..., i(n)>，使得存在一个c(j)属于 
-	/// 区间[a(i(j)), b(i(j))]，满足c(1) <= c(2) <= c(3) <= ... <= c(n)。 \n
-	/// a)  为n个区间的模糊排序设计一个算法。你的算法应该具有算法的一般结构，它可以快速排序左部 
+	/// 区间[a(i(j)), b(i(j))]，满足c(1) <= c(2) <= c(3) <= ... <= c(n)。 :\n
+	/// -   为n个区间的模糊排序设计一个算法。你的算法应该具有算法的一般结构，它可以快速排序左部 
 	///		端点（即各a(i)），也要能充分利用重叠区间来改善运行时间。（随着各区间重叠得越来越多， 
 	///		对各区间进行模糊排序的问题会变得越来越容易。你的算法应能充分利用这种重叠。） \n
-	/// b)  证明：在一般情况下，你的算法的期望运行时间为Θ(nlgn)，但当所有的区间都重叠时，期望的 
+	/// -   证明：在一般情况下，你的算法的期望运行时间为Θ(nlgn)，但当所有的区间都重叠时，期望的 
 	///		运行时间为Θ(n)（亦即，当存在一个值x，使得对所有的i，都有x∈[a(i), b(i)]）。你的算法 
 	///		不应显式地检查这种情况，而是应随着重叠量的增加，性能自然地有所改善。 
 	void SmoothQuickSort(vector< pair<int, int> > &to_sort, int begin_index, int end_index)
@@ -122,6 +118,7 @@ namespace ita
 		}
 	}
 
+	/// 测试快速排序和对模糊区间的快速排序
 	int testQuickSort()
 	{
 		cout << "==========================快速排序=============================" << endl;

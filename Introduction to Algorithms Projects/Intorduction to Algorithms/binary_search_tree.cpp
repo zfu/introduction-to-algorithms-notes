@@ -1,20 +1,17 @@
 //////////////////////////////////////////////////////////////////////////  
-///    COPYRIGHT NOTICE  
-///    Copyright (c) 2009
-///    All rights reserved.  
-///  
 /// @file		binary_search_tree.cpp
-/// @brief		binary_search_tree.cpp的简短描述 
-///  			
-///  			binary_search_tree.cpp的详细描述
-/// 
-/// @author		谭川奇	chuanqi.tan@gmail.com 
-/// @date		2011/05/30
-/// @version 	1.0
+/// @brief		二叉查找树
+/// @details	COPYRIGHT NOTICE  
+///			    Copyright (c) 2011
+///			    All rights reserved.\n
+///			    
 ///  
-///  
-///    修订说明：最初版本  
+/// @author		谭川奇	chuanqi.tan(at)gmail.com
+/// @date		2011/06/17
+/// @version	1.0 
 //////////////////////////////////////////////////////////////////////////  
+/// 修改记录：
+/// 2011/06/17   13:02	1.0	谭川奇	创建
 
 
 #include <iostream>
@@ -23,11 +20,16 @@
 #include <iterator>
 #include <iomanip>
 #include <limits>
+#include <sstream>
+#include "graphviz_shower.h"
 using namespace std;
 
 namespace ita
 {
-	/// 二叉查找树
+	/// @brief 二叉查找树
+	/// 
+	/// 二叉查找树的定义：对任何结点X，其左子树中的关键字最大不超过key[X]；其右子树中的关键字最小不小于key[x]。
+	/// 可以证明：随机构造的二叉村在平均情况下的行为更接近于最佳情况下的行为，而不是接近最坏情况下的行为。所以一棵在n个关键字上随机构造的二叉查找树的期望高度为O(lgn)
 	class BinarySearchTree
 	{
 	private:
@@ -50,7 +52,7 @@ namespace ita
 			_RecursiveReleaseNode(_root);
 		}
 
-		/// 插入一个结点
+		/// @brief 插入一个结点
 		/// 
 		/// 向二叉查找树中插入一个值
 		/// @param	new_value	要插入的值
@@ -91,7 +93,7 @@ namespace ita
 			return true;
 		}
 
-		/// 删除结点
+		/// @brief 删除结点
 		/// 
 		/// 在二叉查找树中删除一个值
 		/// @param	delete_value	要删除的值
@@ -110,7 +112,7 @@ namespace ita
 			}
 		}
 
-		/// 查找元素
+		/// @brief 查找元素
 		/// 
 		/// 在当前二叉查找树中查找某一值
 		/// @param	search_value	要查找的值
@@ -122,18 +124,24 @@ namespace ita
 			return _Search(_root, search_value) != nullptr;
 		}
 
-		/// 显示当前二叉查找树的状态
-		/// 
-		/// 使用dot描述当前二叉查找树
+		/// @brief 使用dot描述当前二叉查找树
 		void Display() const
 		{
-			cout << "digraph graphname" << (rand() % 1000) << "{" << endl
+			stringstream ss;
+			ss << "digraph graphname" << (rand() % 1000) << "{" << endl
 				 << "    node [shape = record,height = .1];" << endl;
-			_Display(_root);
-			cout << "}" << endl;
+			_Display(ss, _root);
+			ss << "}" << endl;
+
+			qi::ShowGraphvizViaDot(ss.str());
 		}
 	
 	private:
+		/// 真正的删除操作
+		/// 
+		/// 唯一有点难度的地方就是在删除同时存在左右子树的结点时需要进行一些处理。
+		/// 书上叙述的有点过度的复杂，其实可以很简单地说明白：对于这样的结点x，找到x结点的前趋（或后继）y，将x的值替换为y的值，
+		/// 然后递归删除y结点就可以了。因为y一定没有右子树（后继对应没有左子树），所以递归删除的时候就是很简单的情况了。
 		void _DeleteNode( _Node * delete_node ) 
 		{
 			if (delete_node->Left && delete_node->Right)
@@ -170,9 +178,10 @@ namespace ita
 			}
 		}
 
-		/// 得到一个同时存在左右子树的节点的前驱
+		/// @brief 得到一个同时存在左右子树的节点的前驱
 		/// 
-		/// @notes		node的前驱一定存在，因为node同时存在左子树和右子树
+		/// @note		node的前驱一定存在，因为node同时存在左子树和右子树，如果不满足这个先决条件，则该算法的结果是错误的。\n
+		///				以后继为例：当结点的右子树不存在时，应该一路向上传递，直到找到根结点（没有后继）或者是找到一次非右子树传递（后继找到）为止。我的代码就在这里犯一次错误了，本以为很简单的！
 		_Node * _GetPreviousNode( _Node * node )
 		{
 			if (!node->Left || !node->Right)
@@ -220,22 +229,22 @@ namespace ita
 			return node;
 		}
 
-		void _Display(_Node *node) const
+		void _Display(stringstream &ss, _Node *node) const
 		{
 			if (node)
 			{
-				cout << "    node" << node->Value << "[label = \"<f0>|<f1>" << node->Value << "|<f2>\"];" << endl;
+				ss << "    node" << node->Value << "[label = \"<f0>|<f1>" << node->Value << "|<f2>\"];" << endl;
 
 				if (node->Left)
 				{
-					cout << "    \"node" << node->Value << "\":f0 -> \"node" << node->Left->Value << "\":f1;" << endl;
-					_Display(node->Left);
+					ss << "    \"node" << node->Value << "\":f0 -> \"node" << node->Left->Value << "\":f1;" << endl;
+					_Display(ss, node->Left);
 				}
 
 				if (node->Right)
 				{
-					cout << "    \"node" << node->Value << "\":f2 -> \"node" << node->Right->Value << "\":f1;" << endl;
-					_Display(node->Right);
+					ss << "    \"node" << node->Value << "\":f2 -> \"node" << node->Right->Value << "\":f1;" << endl;
+					_Display(ss, node->Right);
 				}
 			}
 		}
@@ -244,7 +253,7 @@ namespace ita
 	};
 
 
-
+	/// 测试二叉查找树
 	int testBinarySearchTree()
 	{
 		BinarySearchTree bst;
