@@ -86,6 +86,7 @@ namespace ita
 		return _NthElement(v, 0, v.size() - 1, i);
 	}
 
+	/// 中位数和顺序统计学
 	int testNthElement()
 	{
 		vector<int> v;

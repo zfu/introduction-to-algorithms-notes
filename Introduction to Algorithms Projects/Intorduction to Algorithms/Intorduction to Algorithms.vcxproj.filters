@@ -93,9 +93,6 @@
     <ClInclude Include="bellman_ford.h">
       <Filter>Chapter24</Filter>
     </ClInclude>
-    <ClInclude Include="dijkstra.h">
-      <Filter>Chapter24</Filter>
-    </ClInclude>
     <ClInclude Include="fibonacci_heap.h">
       <Filter>Chapter20</Filter>
     </ClInclude>
@@ -104,6 +101,9 @@
     </ClInclude>
     <ClInclude Include="deapth_first_search.h">
       <Filter>Chapter22</Filter>
+    </ClInclude>
+    <ClInclude Include="dijkstra.h">
+      <Filter>Chapter24</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +167,6 @@
     <ClCompile Include="strongly_connected_component.cpp">
       <Filter>Chapter22</Filter>
     </ClCompile>
-    <ClCompile Include="Intorduction to Algorithms.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="topological_sort.cpp">
       <Filter>Chapter22</Filter>
     </ClCompile>
@@ -205,6 +202,9 @@
     </ClCompile>
     <ClCompile Include="deapth_first_search.cpp">
       <Filter>Chapter22</Filter>
+    </ClCompile>
+    <ClCompile Include="intorduction_to_algorithms.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

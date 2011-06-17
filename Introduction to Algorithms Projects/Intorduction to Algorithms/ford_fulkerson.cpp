@@ -11,7 +11,7 @@
 /// @version	1.0 
 //////////////////////////////////////////////////////////////////////////  
 /// 修改记录：
-/// 2011/06/17   17:43	1.0	谭川奇	创建
+/// 2011/06/17		1.0	谭川奇	创建
 
 #include <vector>
 #include <iostream>
@@ -106,7 +106,23 @@ namespace ita
 
 	}
 
-    /// FordFulkerson最大流算法
+    /// @brief FordFulkerson最大流算法
+	/// 
+	/// <b>最大流问题：是关于流网络的最简单问题，它提出这样的问题：在不违背容量限制的条件下，把物质从源点传输到汇点的最大速率是多少？</b>\n
+	/// Ford-Fulkerson算法是求最大流的一般方法，它利用了三点：残留网络、增广路径、最大流最小割定理。
+	/// - 残留网络：G<sub>f</sub>由可以容纳更多网络流的边所组成；
+	/// - 增广路径：为残留网络G<sub>f</sub>上从s到t的一条简单路径p，其中p中所的边的最小权值为该增广路径的残留容量；
+	/// - 最大流最小割定理：证明了Ford-Fulkerson算法能够得到全局最优解“当一个流是最大流，当且仅当它的残留网络不包含增广路径”。
+	/// 
+	/// Ford-Fulkerson算法的简明步骤：
+	/// - 初始化G中所有边的流为0；
+	/// - 计算当前图与当前流所映射的残留网络G<sub>f</sub>；
+	/// - 从残留网络上选取一条增广路径并计算出残留容量，将残留容量添加到图的当前流上；
+	/// - 循环步骤b-c直到残留网络G<sub>f</sub>中不存在增广路径为止；
+	/// - 此时的流即为G的最大流。
+	/// 
+	/// 使用“广度优先搜索”来求增广路径的Ford-Fulkerson算法即称之为Edmonds-Karp算法，这种使用广度优先搜索来求增广路径的算法能够改善Ford-Fulkerson算法的运行时间。
+	/// @param	g		使用邻接矩阵表示的图
     int FordFulkerson( GrpahicsViaAdjacencyMatrix<string, int> &g )
     {
         int const n = g.GetVertex().size();
@@ -147,7 +163,7 @@ namespace ita
     }
 
 
-
+	/// FordFulkerson最大流算法
     void testFordFulkerson()
     {
         cout << "FordFulkerson最大流" << endl;

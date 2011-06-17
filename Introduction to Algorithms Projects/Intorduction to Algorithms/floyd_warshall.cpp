@@ -29,7 +29,11 @@ using namespace std;
 
 namespace ita
 {
-	/// FloydWarshall每对顶点间的最短路径算法
+	/// @brief FloydWarshall每对顶点间的最短路径算法
+	/// 
+	/// Folyd-Warshall是一个动态规划算法，运行时间为O(V<sup>3</sup>)，它允许权值为负的边，但是假定了不存在权值为负的回路。\n
+	/// Folyd-Warshall的核心在于：相对于“朴素动态规划算法”，它改进了“最优子问题结构”，使用d<sub>ij</sub>(k)来表示从顶点i到顶点j、
+	/// 且满足所有中间顶点皆属于集合{1,2,…,k}的一条最短路径的权值。这种限定了起始点的技巧大大的减少了实现的计算量。\n
     void FloydWarshall()
     {
         cout << "FloydWarshall最短路径" << endl;

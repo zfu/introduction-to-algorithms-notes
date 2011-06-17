@@ -29,7 +29,7 @@ using namespace std;
 
 namespace ita
 {
-
+	/// BellmanFord单源最短路径算法
 	bool testBellmanFord()
 	{
 		cout << "Bellman-Ford最短路径" << endl;
@@ -56,12 +56,18 @@ namespace ita
 		vector<int> d(g.GetVertex().size());
 		vector<int> parent_index(g.GetVertex().size());
 
-		BellmanFord(g, start_index, d, parent_index);
-
-		for (size_t i = 0; i < g.GetVertex().size(); ++i)
+		if (!BellmanFord(g, start_index, d, parent_index))
 		{
-			cout << g.GetVertex()[i] << " | " << d[i] << endl;
+			cout << "存在负值回路" << endl;
 		}
+		else
+		{
+			for (size_t i = 0; i < g.GetVertex().size(); ++i)
+			{
+				cout << g.GetVertex()[i] << " | " << d[i] << endl;
+			}
+		}
+
 		return true;
 	}
 }
