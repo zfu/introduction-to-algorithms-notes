@@ -30,6 +30,7 @@ using namespace std;
 
 namespace ita
 {
+	/// Dijkstra单源最短路径算法
 	void testDijkstra()
 	{
 		cout << "Dijkstra最短路径" << endl;

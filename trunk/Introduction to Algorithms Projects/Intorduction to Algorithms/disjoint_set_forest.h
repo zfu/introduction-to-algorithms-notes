@@ -11,7 +11,7 @@
 /// @version	1.0 
 //////////////////////////////////////////////////////////////////////////  
 /// 修改记录：
-/// 2011/06/17   15:56	1.0	谭川奇	创建
+/// 2011/06/17	1.0	谭川奇	创建
 
 #include <iostream>
 #include <vector>
@@ -54,6 +54,7 @@ namespace ita
 		}
 
 		/// 查找所属集合的操作：FIND-SET
+		/// @remarks	使用了路径压缩
 		template<typename T>
 		static DisjointSet<T> * FindSet(DisjointSet<T> *a_set)
 		{
@@ -66,6 +67,7 @@ namespace ita
 		}
 
 		/// 合并操作：UNION
+		/// @remarks	使用了按秩合并
 		template<typename T>
 		static void Union(DisjointSet<T> *x, DisjointSet<T> *y)
 		{

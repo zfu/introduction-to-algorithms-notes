@@ -59,7 +59,18 @@ namespace ita
 		}
 	}
 
-	/// Bellman-Ford最短路径算法
+	/// @brief Bellman-Ford最短路径算法
+	/// 
+	/// <b>最短路径：一个顶点到另一个顶点的最短权值路径。广度优先搜索算法就是一种在无权（单位权值）图上执行的最短路径算法。</b>\n
+	/// Bellman-Ford算法非常简单：对所有的边进行|v|-1遍循环，在每次循环中对每一条边进行松弛的操作。\n
+	/// @remarks		floyd算法允许输入边存在负权边，只要不存在从源点可达的负权回路。而且如果存在着负权回路，它还能检测出来。
+	/// @param	g				用邻接表法表示的图
+	/// @param	start_index		计算顶点start_index到其它所有点的最短路径
+	/// @param	d				算法结束后，d[i]存储从start_index到顶点i的最短路径
+	/// @parem	parent_index	记录算法在运行的进行中的选。算法结束后，parent_index[i]表示从start_index到顶点i的最短路径的倒数第二个结点的编号
+	/// @return			算法是否执行成功，取决于图中是否存在“负权回路”。
+	/// @retval	true	算法执行成功，图中不存在“负权回路
+	/// @retval	false	算法执行失败，图中存在“负权回路
 	template<typename T>
 	bool BellmanFord(GraphicsViaAdjacencyList<T> &g, int start_index, vector<int> &d, vector<int> &parent_index)
 	{
@@ -78,7 +89,6 @@ namespace ita
 		{
 			if (d[edges[i].second] > d[edges[i].first] + g.IsLinked(edges[i].first, edges[i].second).second->Weight)
 			{
-				cout << "存在负值回路" << endl;
 				return false;
 			}
 		}

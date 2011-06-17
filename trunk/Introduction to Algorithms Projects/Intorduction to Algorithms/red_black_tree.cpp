@@ -486,6 +486,7 @@ private:
 template<typename TKey, typename TValue>
 typename RBTree<TKey, TValue>::RBTreeNode * RBTree<TKey, TValue>::s_nil = nullptr;
 
+/// ºìºÚÊ÷
 int testRedBlackTree()
 {
     int init[] = {11, 2, 14, 1, 7, 15, 5, 8};

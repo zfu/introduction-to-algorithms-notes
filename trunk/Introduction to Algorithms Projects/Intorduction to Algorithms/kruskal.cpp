@@ -28,7 +28,10 @@ using namespace std;
 
 namespace ita
 {
-	/// Kruskal最小生成树算法
+	/// @brief Kruskal最小生成树算法
+	/// 
+	/// <b>最小（权值）生成树：由n-1条边，连接了所有的n个顶点，并且所有边上的权值和最小。</b>\n\n
+	/// Kruskal算法中，集合A是一个森林，加入集合A中的安全边总是图中连接两个不同连通分支的最小权边；
 	void Kruskal()
 	{
 		vector<char> v;

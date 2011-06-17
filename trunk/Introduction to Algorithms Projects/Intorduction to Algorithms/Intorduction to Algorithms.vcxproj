@@ -109,7 +109,7 @@
     <ClCompile Include="longest_common_subsequence.cpp" />
     <ClCompile Include="hash_table.cpp" />
     <ClCompile Include="heap_sort.cpp" />
-    <ClCompile Include="Intorduction to Algorithms.cpp" />
+    <ClCompile Include="intorduction_to_algorithms.cpp" />
     <ClCompile Include="linear_sort.cpp" />
     <ClCompile Include="matrix_list_multiply.cpp" />
     <ClCompile Include="neatly_print.cpp" />
