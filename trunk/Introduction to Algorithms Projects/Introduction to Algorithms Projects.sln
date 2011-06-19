@@ -5,6 +5,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Intorduction to Algorithms"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9561B431-0754-4229-93C7-5360DC94814D}"
 	ProjectSection(SolutionItems) = preProject
+		Doxyfile = Doxyfile
 		算法导论 读书笔记.docx = 算法导论 读书笔记.docx
 	EndProjectSection
 EndProject
