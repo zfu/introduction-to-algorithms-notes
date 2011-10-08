@@ -14,8 +14,11 @@
 /// 2011/06/17   16:01	1.0	Ì·´¨Ææ	´´½¨
 
 
-#include "disjoint_set_forest.h"
+#include <iostream>
+#include <vector>
 using namespace std;
+
+#include "disjoint_set_forest.h"
 
 namespace ita
 {

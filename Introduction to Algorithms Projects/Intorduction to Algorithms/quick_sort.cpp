@@ -36,7 +36,7 @@ namespace ita
 			int random_swap = ( rand() % ( EndIndex - BeginIndex + 1 ) ) + BeginIndex;
 			std::swap( ToSort[random_swap], ToSort[EndIndex] );
 
-			//i代表的是比ToSort[EndIndex]小的元素的上界，即ToSort[0...i)的元素值都比ToSort[EndIndex]要小
+			//i代表的是比ToSort[EndIndex]小的元素的上界，即ToSort[BeginIndex,i)的元素值都比ToSort[EndIndex]要小
 			//也意味着下一个比ToSort[EndIndex]小的元素要放置的位置；但是在当前可能ToSort[i] >= ToSort[EndIndex]
 			int i = BeginIndex;
 
@@ -47,7 +47,7 @@ namespace ita
 				if ( ToSort[j] < ToSort[EndIndex] )
 				{
 					swap( ToSort[i], ToSort[j] );	//将这个比ToSort[EndIndex]小的元素移到第i个去,满足了i代表的意义
-					++i;						//由于新找到了一个比ToSort[EndIndex]小的元素,所以上界应该+1
+					++i;							//由于新找到了一个比ToSort[EndIndex]小的元素,所以上界应该+1
 				}
 			}
 			swap( ToSort[i], ToSort[EndIndex] );
@@ -77,23 +77,23 @@ namespace ita
 		if ( begin_index < end_index )
 		{
 			//取最后一个区间为主元
-			auto last = to_sort[end_index];
+			auto principal = to_sort[end_index];
 			//获取要比较的区间（除去主元）为[begin_index, end_index) => [i,j]
 			//区间[i,j]意思是：其中所有的元素要不还未处理，要不相互重叠有至少一个重叠值，并且该值还与to_sort[end_index]重叠
 			//即在题目中规定的语义下与to_sort[end_index]绝对相等
 			int i = begin_index;
 			int j = end_index - 1;
 
-			for ( int k = begin_index; k <= j; )
+			for ( int k = begin_index; k <= j; )	//k为当前正在处理的元素
 			{
-				if ( to_sort[k].second <= last.first )
+				if ( to_sort[k].second <= principal.first )
 				{
 					//严格小于主元
 					swap( to_sort[i], to_sort[k] );
 					++i;
 					++k;
 				}
-				else if ( to_sort[k].first >= last.second )
+				else if ( to_sort[k].first >= principal.second )
 				{
 					//严格大于主元
 					swap( to_sort[j], to_sort[k] );
@@ -104,12 +104,14 @@ namespace ita
 					// 与主元区间有重叠，则更新主元为重叠区间（交集）
 					// 此方法参考了 http://blogold.chinaunix.net/u/18517/showart_487873.html
 					//
-					// 这种想法真的好，因为缩小了主元的区间（交集），所以就可以认为以后任何与缩小之后主元有重叠的区间都一定与当前区间to_sort[k]重叠（因为它完全包括缩小后的主元）\n
-					// 因此这样就可以确定最后在[i,j]中的所有元素在本题的约定下与主元绝对相等（即所有的元素相互重叠），所以不需要再处理。这就符合了题目中的“充分利用重叠区间来改善运行时间”\n
+					// 这种想法真的好，因为缩小了主元的区间（交集），所以就可以认为以后任何与缩小之后主元有重叠
+					// 的区间都一定与当前区间to_sort[k]重叠（因为它完全包括缩小后的主元）\n
+					// 因此这样就可以确定最后在[i,j]中的所有元素在本题的约定下与主元绝对相等（即所有的元素相互
+					// 重叠），所以不需要再处理。这就符合了题目中的“充分利用重叠区间来改善运行时间”\n
 					// 如果没有这步缩小区间，就只能认为[i,j]中的元素各自与主元有重叠而无法判断为绝对相等。
 					// @note	这里很容易弄错的一点是：区间重叠并没有传递性，重叠区间的元素并不能认为是已序的
-					last.first = max( to_sort[k].first, last.first );
-					last.second = min( to_sort[k].second, last.second );
+					principal.first = max( to_sort[k].first, principal.first );
+					principal.second = min( to_sort[k].second, principal.second );
 					++k;
 				}
 			}

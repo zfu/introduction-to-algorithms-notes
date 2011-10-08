@@ -66,8 +66,12 @@ namespace ita
 		copy( v.begin(), v.end(), std::ostream_iterator<int>( std::cout, "  " ) );
 	}
 
-	/// 基数排序时值最大的维数：k_max_dim = 3意味着元素的区间为[0, 999]
-	int const k_max_dim = 3;
+	namespace{
+
+		/// 基数排序时值最大的维数：k_max_dim = 3意味着元素的区间为[0, 999]
+		int const k_max_dim = 3;
+
+	}
 
 	/// @brief 基数排序
 	///

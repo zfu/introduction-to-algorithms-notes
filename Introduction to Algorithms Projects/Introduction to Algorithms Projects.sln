@@ -4,10 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Intorduction to Algorithms", "Intorduction to Algorithms\Intorduction to Algorithms.vcxproj", "{3CEDCAAC-AB51-47CF-A1E6-F6E1055E134E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9561B431-0754-4229-93C7-5360DC94814D}"
+<<<<<<< .mine
+=======
 	ProjectSection(SolutionItems) = preProject
 		Doxyfile = Doxyfile
 		算法导论 读书笔记.docx = 算法导论 读书笔记.docx
 	EndProjectSection
+>>>>>>> .r41
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution

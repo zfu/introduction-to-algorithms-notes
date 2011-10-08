@@ -13,10 +13,6 @@
 /// 修改记录：
 /// 2011/06/17	1.0	谭川奇	创建
 
-#include <iostream>
-#include <vector>
-using namespace std;
-
 namespace ita
 {
 
@@ -87,13 +83,12 @@ namespace ita
 			else
 			{
 				x->Parent = y;
-			}
-
-			//按秩合并
-			if ( x->Rank == y->Rank )
-			{
-				//只有在秩相同时才会将最后的根结点的秩+1
-				++( y->Rank );
+				//按秩合并
+				if ( x->Rank == y->Rank )
+				{
+					//只有在秩相同时才会将最后的根结点的秩+1
+					++( y->Rank );
+				}
 			}
 		}
 	};

@@ -11,7 +11,8 @@
 /// @version	1.0
 //////////////////////////////////////////////////////////////////////////
 /// 修改记录：
-/// 2011/06/17   17:42	1.0	谭川奇	创建
+/// 2011/06/17		17:42	1.0	谭川奇	创建
+/// 2011/10/08		10:16	1.1 谭川奇	修改了空间复杂度，将由三维的空间需求降到了二维
 
 #include <vector>
 #include <iostream>
@@ -34,6 +35,8 @@ namespace ita
     /// Folyd-Warshall是一个动态规划算法，运行时间为O(V<sup>3</sup>)，它允许权值为负的边，但是假定了不存在权值为负的回路。\n
     /// Folyd-Warshall的核心在于：相对于“朴素动态规划算法”，它改进了“最优子问题结构”，使用d<sub>ij</sub>(k)来表示从顶点i到顶点j、
     /// 且满足所有中间顶点皆属于集合{1,2,…,k}的一条最短路径的权值。这种限定了起始点的技巧大大的减少了实现的计算量。\n
+    /// @note		Floyd -Warshall算法本来是需要三维的空间复杂度，但在实际算法中，为了节约空间，可以直接在原来空间
+    ///				上进行迭代，这样空间可降至二维。（相比上一个版本的代码，这里已有体现）
     void FloydWarshall()
     {
         cout << "FloydWarshall最短路径" << endl;
@@ -56,35 +59,35 @@ namespace ita
         g.Link2Vertex( 4, 3, 6 );
 
         int const n = v.size();	//顶点的个数
-        vector<vector<vector<int>>> D( n + 1, vector<vector<int>>( n, vector<int>( n, 0 ) ) );
+       vector<vector<int>> D( n, vector<int>( n, 0 ) );
 
         for ( int i = 0; i < n; ++i )
         {
             for ( int j = 0; j < n; ++j )
             {
-                D[0][i][j] = numeric_limits<int>::max();
+                D[i][j] = numeric_limits<int>::max();
                 if ( i == j )
                 {
-                    D[0][i][j] = 0;
+                    D[i][j] = 0;
                 }
                 if ( g.GetEdge()[i][j] != 0 )
                 {
-                    D[0][i][j] = g.GetEdge()[i][j];
+                    D[i][j] = g.GetEdge()[i][j];
                 }
             }
         }
 
-        for ( int k = 1; k <= n; ++k )
+        for ( int k = 0; k < n; ++k )
         {
-            //中间结点允许为[0 ... k-1]的情况
+            //中间结点允许为[k]的情况
             for ( int i = 0; i < n; ++i )
             {
                 for ( int j = 0; j < n; ++j )
                 {
-                    D[k][i][j] = min( D[k - 1][i][j]
-                                      , ( D[k - 1][i][k - 1] == numeric_limits<int>::max() || D[k - 1][k - 1][j] == numeric_limits<int>::max()
-                                          ? numeric_limits<int>::max()
-                                          : D[k - 1][i][k - 1] + D[k - 1][k - 1][j] ) );
+                    D[i][j] = min( D[i][j]
+                                 , ( D[i][k] == numeric_limits<int>::max() || D[k][j] == numeric_limits<int>::max()
+									 ? numeric_limits<int>::max()
+									 : D[i][k] + D[k][j] ) );
                 }
             }
         }
@@ -93,7 +96,7 @@ namespace ita
         {
             for ( int j = 0; j < n; ++j )
             {
-                cout << D[n][i][j] << "  ";
+                cout << D[i][j] << "  ";
             }
             cout << endl;
         }

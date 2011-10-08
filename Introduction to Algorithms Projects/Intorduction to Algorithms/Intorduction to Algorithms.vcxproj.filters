@@ -13,20 +13,8 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Chapter7">
-      <UniqueIdentifier>{a6fa2746-29a7-4c70-852b-1e338d9098ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Chapter6">
-      <UniqueIdentifier>{0584a131-d678-4a3b-943e-dbea4d7f37be}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Chapter15">
       <UniqueIdentifier>{b5520f27-5746-49da-8012-6aa7d787f811}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Chapter8">
-      <UniqueIdentifier>{b8b8d1d2-a687-4adb-aa3b-71e6f2e9ad8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Chapter9">
-      <UniqueIdentifier>{0af3fa6b-cdfd-4322-a0f7-d27045280da8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Chapter11">
       <UniqueIdentifier>{769f6a87-2471-406d-908f-34e074d2016d}</UniqueIdentifier>
@@ -70,6 +58,18 @@
     <Filter Include="Chapter20">
       <UniqueIdentifier>{4d09b3c4-0afc-4e54-abb6-5b691225c31d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter06">
+      <UniqueIdentifier>{0584a131-d678-4a3b-943e-dbea4d7f37be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter07">
+      <UniqueIdentifier>{a6fa2746-29a7-4c70-852b-1e338d9098ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter08">
+      <UniqueIdentifier>{b8b8d1d2-a687-4adb-aa3b-71e6f2e9ad8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Chapter09">
+      <UniqueIdentifier>{0af3fa6b-cdfd-4322-a0f7-d27045280da8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -97,7 +97,7 @@
       <Filter>Chapter20</Filter>
     </ClInclude>
     <ClInclude Include="priority_queue.h">
-      <Filter>Chapter6</Filter>
+      <Filter>Chapter06</Filter>
     </ClInclude>
     <ClInclude Include="deapth_first_search.h">
       <Filter>Chapter22</Filter>
@@ -111,16 +111,16 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="quick_sort.cpp">
-      <Filter>Chapter7</Filter>
+      <Filter>Chapter07</Filter>
     </ClCompile>
     <ClCompile Include="heap_sort.cpp">
-      <Filter>Chapter6</Filter>
+      <Filter>Chapter06</Filter>
     </ClCompile>
     <ClCompile Include="linear_sort.cpp">
-      <Filter>Chapter8</Filter>
+      <Filter>Chapter08</Filter>
     </ClCompile>
     <ClCompile Include="nth_element.cpp">
-      <Filter>Chapter9</Filter>
+      <Filter>Chapter09</Filter>
     </ClCompile>
     <ClCompile Include="hash_table.cpp">
       <Filter>Chapter11</Filter>

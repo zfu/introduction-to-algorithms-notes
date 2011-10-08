@@ -121,12 +121,13 @@ namespace ita
     /// - 循环步骤b-c直到残留网络G<sub>f</sub>中不存在增广路径为止；
     /// - 此时的流即为G的最大流。
     ///
-    /// 使用“广度优先搜索”来求增广路径的Ford-Fulkerson算法即称之为Edmonds-Karp算法，这种使用广度优先搜索来求增广路径的算法能够改善Ford-Fulkerson算法的运行时间。
+    /// 使用“广度优先搜索”来求增广路径的Ford-Fulkerson算法即称之为Edmonds-Karp算法，这种使用广度优先搜索来求增广路径
+    /// 的算法能够改善Ford-Fulkerson算法的运行时间。
     /// @param	g		使用邻接矩阵表示的图
     int FordFulkerson( GrpahicsViaAdjacencyMatrix<string, int> &g )
     {
-        int const n = g.GetVertex().size();
-        vector<vector<int>> f( n, vector<int>( n, 0 ) );
+        int const n = g.GetVertex().size();		
+        vector<vector<int>> f( n, vector<int>( n, 0 ) );	//f=fluent表示当前图上的流
 
         while ( true )
         {
