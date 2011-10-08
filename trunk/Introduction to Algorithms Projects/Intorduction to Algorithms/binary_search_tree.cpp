@@ -142,9 +142,14 @@ namespace ita
 	private:
 		/// 真正的删除操作
 		///
-		/// 唯一有点难度的地方就是在删除同时存在左右子树的结点时需要进行一些处理。
-		/// 书上叙述的有点过度的复杂，其实可以很简单地说明白：对于这样的结点x，找到x结点的前趋（或后继）y，将x的值替换为y的值，
-		/// 然后递归删除y结点就可以了。因为y一定没有右子树（后继对应没有左子树），所以递归删除的时候就是很简单的情况了。
+		/// 唯一有点难度的地方就是在删除同时存在左右子树的结点时需要进行一些处理。\n
+		/// 书上叙述的有点过度的复杂，其实可以很简单地说明白：对于这样的结点x，找到x结点的前趋（或后继）y，将x的值替换为
+		/// y的值，然后递归删除y结点就可以了。因为y一定没有右子树（后继对应没有左子树），所以递归删除的时候就是很简单的
+		/// 情况了。
+		/// @note		我这里的方法的确比书上介绍的要好而且容易理解，我这里方法更好的的关键在于：\n
+		///				我的_DeleteNode的参数是要删除的结点的指针，所以是在删除同时存在左右子树的结点时，我可以直接使用y
+		///				的值赋给x结点，再递归删除y结点。如果本方法的参数不是结点的指针而是结点的值，再递归删除y结点的值
+		///				时就会出问题，因为此时x结点的值==y结点的值了。嗯，我的这种以结点指针为参数的思路的确不错！
 		void _DeleteNode( _Node * delete_node )
 		{
 			if ( delete_node->Left && delete_node->Right )
@@ -172,7 +177,10 @@ namespace ita
 				}
 				else
 				{
-					( delete_node->Parent->Left == delete_node ? delete_node->Parent->Left : delete_node->Parent->Right ) = sub_node;
+					( delete_node->Parent->Left == delete_node 
+						? delete_node->Parent->Left 
+						: delete_node->Parent->Right ) 
+						= sub_node;
 
 					if ( sub_node )
 					{

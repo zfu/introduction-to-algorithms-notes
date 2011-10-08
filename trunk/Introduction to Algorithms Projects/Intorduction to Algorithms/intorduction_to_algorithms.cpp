@@ -134,7 +134,7 @@ int _tmain( int argc, _TCHAR* argv[] )
     //FloydWarshall();
     //Johnson();
 
-    //testFordFulkerson();
+    testFordFulkerson();
     return 0;
 }
 

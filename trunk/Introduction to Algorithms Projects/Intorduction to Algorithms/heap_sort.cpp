@@ -29,11 +29,11 @@ namespace ita
 	///
 	/// 将to_make的[0,length)元素视为一棵完全二叉树，以第i个元素为根的子树除了第i个元素之外都满足大堆的性质
 	/// 调用此方法之后，这棵完全二叉树以第i个元素为根的子树都满足大堆的性质
-	/// @param	to_make	保存数据的数组
+	/// @param	to_make		保存数据的数组
 	/// @param	length		标记to_make的[0,length)元素视为一个完全二叉树<br/>
 	///						第length个元素之后[length, n)的元素不包括在这棵完全二叉树里
 	/// @param	i			需要处理的第i个元素
-	/// @note		to_make的前length个元素并不一定是一个堆（因为它不满足大堆的性质），但可以映射为完全二叉树
+	/// @note				to_make的前length个元素并不一定是一个堆（因为它不满足大堆的性质），但可以映射为完全二叉树
 	void MakeHeap( vector<int> &to_make, size_t length, size_t i )
 	{
 		size_t left = 2 * i + 1;
