@@ -83,6 +83,9 @@ namespace ita
 
     //第26章：最大流
     void testFordFulkerson();				//FordFulkerson最大流算法
+
+	//第32章：字符串匹配
+	int StringMatchAlgorithms();			//字符串匹配算法
 }
 
 using namespace ita;
@@ -134,7 +137,10 @@ int _tmain( int argc, _TCHAR* argv[] )
     //FloydWarshall();
     //Johnson();
 
-    testFordFulkerson();
+    //testFordFulkerson();
+
+	StringMatchAlgorithms();
+
     return 0;
 }
 

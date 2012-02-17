@@ -98,7 +98,7 @@ namespace ita
         {
             //LongestCommonSubsequenceViaMemoize方法的备忘录。
             //memoize[i][j]意味着:取LeftHandSide的前i个字符得到的子字符串与取RightHandSide的前j个字符得到的子字符串 的最长公共子序列的长度
-            static vector< vector<int> > memoize;
+            vector< vector<int> > memoize;
             //初始化memoize数组,使得其为memoize[0..m, 0..n]
             memoize.resize( LeftHandSide.size() + 1 );
             for_each( memoize.begin(), memoize.end(), []( vector<int> &v )
@@ -148,14 +148,9 @@ namespace ita
         /// 正统的动态规划与带备忘录功能的递归虽然有着相同的渐近复杂度,但是正统的动态规划往往有着更好的常数因子,因而效率更高
         void LongestCommonSubsequenceViaDynamicProgramming()
         {
-            //lcs[i][j]意味着:取LeftHandSide的前i个字符得到的子字符串与取RightHandSide的前j个字符得到的子字符串 的最长公共子序列的长度
-            static vector< vector<int> > lcs;
-            //初始化lcs数组,使得其为lcs[0..m, 0..n]
-            lcs.resize( LeftHandSide.size() + 1 );
-            for_each( lcs.begin(), lcs.end(), []( vector<int> &v )
-            {
-                v.resize( RightHandSide.size() + 1, 0 );
-            } );
+            // lcs[i][j]意味着:取LeftHandSide的前i个字符得到的子字符串与取RightHandSide的前j个字符得到的子字符串 
+            // 的最长公共子序列的长度，并初始化为0。
+            vector< vector<int> > lcs(LeftHandSide.size() + 1, vector<int>(RightHandSide.size() + 1, 0));
 
             for ( size_t i = 1; i <= LeftHandSide.size(); ++i )
             {
@@ -198,9 +193,9 @@ namespace ita
     int LongestCommonSubsequence()
     {
         LongestCommonSubsequenceViaMemoize();
+        LongestCommonSubsequenceViaDynamicProgramming();
 
         cout << LongestCommonSubsequenceViaRecurise( LeftHandSide.size(), RightHandSide.size() ) << endl;
-        LongestCommonSubsequenceViaDynamicProgramming();
 
         return 0;
     }
