@@ -70,6 +70,9 @@
     <Filter Include="Chapter09">
       <UniqueIdentifier>{0af3fa6b-cdfd-4322-a0f7-d27045280da8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter32">
+      <UniqueIdentifier>{45023ab9-daca-42eb-bd10-e9a4ed4b2ba7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -205,6 +208,9 @@
     </ClCompile>
     <ClCompile Include="intorduction_to_algorithms.cpp">
       <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="string_match.cpp">
+      <Filter>Chapter32</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

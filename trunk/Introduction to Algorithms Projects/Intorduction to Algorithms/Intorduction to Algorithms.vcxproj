@@ -124,6 +124,7 @@
       <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </ForcedIncludeFiles>
     </ClCompile>
+    <ClCompile Include="string_match.cpp" />
     <ClCompile Include="strongly_connected_component.cpp" />
     <ClCompile Include="topological_sort.cpp" />
   </ItemGroup>
