@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////////////////////
 /// @file		string_match.cpp
-/// @brief		字符串的几种匹配算法
+/// @brief		字符串匹配算法
 /// @details	COPYRIGHT NOTICE
 ///			    Copyright (c) 2011
 ///			    All rights reserved.\n
@@ -91,7 +91,7 @@ namespace ita
 		//step 1: get pi array
 		vector<int> pi(p.size(), 0);
 
-		for (int i = 2; i < p.size(); ++i){
+		for (int i = 1; i < p.size(); ++i){
 			for (int j = i - 1; j >= 0; --j){
 				if (p.substr(0, j + 1) == p.substr(i - j, j + 1)){
 					pi[i] = j + 1;
@@ -103,10 +103,8 @@ namespace ita
 		//step 2: match
 		for (int i = 0; i <= text.size() - p.size(); ){
 			int j = 0;
-			for (; j < p.size(); ++j){
-				if (text[i + j] != p[j]){
-					break;
-				}
+			while (j < p.size() && text[i + j] == p[j]){
+				++j;
 			}
 
 			if (j >= p.size()){			//matched：匹配成功
@@ -116,7 +114,7 @@ namespace ita
 				++i;
 			}
 			else{
-				i += (j - pi[j - 1]);	//skip：尽量跳跃，公式为j-1+1 - pi[j-1] = j-pi[j-1]
+				i += (j - pi[j - 1]);	//skip：尽量右移，公式为j-1+1 - pi[j-1] = j-pi[j-1]
 			}
 		}
 
@@ -136,6 +134,7 @@ namespace ita
 
 			bool b1 = (KMPMatch(text, pattern) != -1);
 			bool b2 = (matcher.Match(text) != -1);
+
 			if (b1 != b2){
 				cout << "两种方法结果不同！！！ : " << text << endl;
 			}
@@ -150,8 +149,11 @@ namespace ita
 					cout << "至少一种方法未匹配成功 : " << text << endl;
 				}
 			}
-
-
+			else{
+				if (b1 || b2){
+					cout << "不包含 'abc' 的串被某种方法误匹配：" << text << endl;
+				}
+			}
 		}		
 
 		return 0;
