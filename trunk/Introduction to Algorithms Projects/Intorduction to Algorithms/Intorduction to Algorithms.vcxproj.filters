@@ -73,6 +73,9 @@
     <Filter Include="Chapter32">
       <UniqueIdentifier>{45023ab9-daca-42eb-bd10-e9a4ed4b2ba7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Chapter33">
+      <UniqueIdentifier>{04274c32-bb2f-4bcf-82b0-e68ca5772fa0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -211,6 +214,9 @@
     </ClCompile>
     <ClCompile Include="string_match.cpp">
       <Filter>Chapter32</Filter>
+    </ClCompile>
+    <ClCompile Include="computational_geometry.cpp">
+      <Filter>Chapter33</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -86,6 +86,9 @@ namespace ita
 
 	//第32章：字符串匹配
 	int StringMatchAlgorithms();			//字符串匹配算法
+
+	//第33章：计算几何
+	void testComputionalGeometry();
 }
 
 using namespace ita;
@@ -139,7 +142,9 @@ int _tmain( int argc, _TCHAR* argv[] )
 
     //testFordFulkerson();
 
-	StringMatchAlgorithms();
+	//StringMatchAlgorithms();
+
+	testComputionalGeometry();
 
     return 0;
 }
