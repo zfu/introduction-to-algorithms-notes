@@ -106,6 +106,7 @@
     <ClCompile Include="huffman_code.cpp" />
     <ClCompile Include="johnson.cpp" />
     <ClCompile Include="kruskal.cpp" />
+    <ClCompile Include="computational_geometry.cpp" />
     <ClCompile Include="longest_common_subsequence.cpp" />
     <ClCompile Include="hash_table.cpp" />
     <ClCompile Include="heap_sort.cpp" />
