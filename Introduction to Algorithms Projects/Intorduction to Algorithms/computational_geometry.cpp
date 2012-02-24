@@ -88,8 +88,6 @@ namespace ita
 		PointD End;
 	};
 
-
-
 	/// 确定任意一对线段是否相交
 	bool IsAnySegmentsIntersect(vector<Segments> const &segs){
 		/// 线段的端点
@@ -163,7 +161,8 @@ namespace ita
 		return false;
 	}
 
-	double DistanceOfTwoPoints(PointD pp1, PointD pp2){
+	//两个点之间的距离
+	double PointDistance(PointD pp1, PointD pp2){
 		return sqrt((pp1.X - pp2.X)*(pp1.X - pp2.X) + (pp1.Y - pp2.Y)*(pp1.Y - pp2.Y));
 	}
 
@@ -225,7 +224,7 @@ namespace ita
 		for(size_t i = 0; i < points.size(); ++i){
 			PointD const &p = points[i];
 			if (p.X != min_point.X || p.Y != min_point.Y){
-				PointDWapper pw(p, CalcAngleOfTwoPoints(min_point, p), DistanceOfTwoPoints(min_point, p));
+				PointDWapper pw(p, CalcAngleOfTwoPoints(min_point, p), PointDistance(min_point, p));
 				ps.push_back(pw);
 			}
 		};
@@ -270,15 +269,15 @@ namespace ita
 		return s;
 	}
 
-	/// 寻找最近点对
-	pair<PointD, PointD> NearestPointPair(vector<PointD> const &X, vector<PointD> const &Y){
+	/// 寻找最近点对的分治算法
+	pair<PointD, PointD> _NearestPointPair(vector<PointD> const &X, vector<PointD> const &Y){
 		pair<PointD, PointD> min_pair;
 
 		if (X.size() <= 3){			//临界条件,少于或等于3个点时直接求出最近距离点对
 			double min_distance = numeric_limits<double>::max();			
 			for (size_t i = 0; i < X.size() - 1; ++i){
 				for (size_t j = i + 1; j < X.size(); ++j){
-					double dis = DistanceOfTwoPoints(X[i], X[j]);
+					double dis = PointDistance(X[i], X[j]);
 					if (dis < min_distance){
 						min_distance = dis;
 						min_pair = make_pair(X[i], X[j]);
@@ -299,16 +298,16 @@ namespace ita
 			sort(left_side_Y.begin(), left_side_Y.end(), pred_by_Y);
 			sort(right_side_Y.begin(), right_side_Y.end(), pred_by_Y);
 
-			auto left_nearest = NearestPointPair(left_side_X, left_side_Y);
-			auto right_nearest = NearestPointPair(right_side_X, right_side_Y);
+			auto left_nearest = _NearestPointPair(left_side_X, left_side_Y);
+			auto right_nearest = _NearestPointPair(right_side_X, right_side_Y);
 
 			double nearest_distance = 0;
-			if (DistanceOfTwoPoints(left_nearest.first, left_nearest.second) < DistanceOfTwoPoints(right_nearest.first, right_nearest.second)){
-				nearest_distance = DistanceOfTwoPoints(left_nearest.first, left_nearest.second);
+			if (PointDistance(left_nearest.first, left_nearest.second) < PointDistance(right_nearest.first, right_nearest.second)){
+				nearest_distance = PointDistance(left_nearest.first, left_nearest.second);
 				min_pair = left_nearest;
 			}
 			else{
-				nearest_distance = DistanceOfTwoPoints(right_nearest.first, right_nearest.second);
+				nearest_distance = PointDistance(right_nearest.first, right_nearest.second);
 				min_pair = right_nearest;
 			}
 
@@ -321,8 +320,8 @@ namespace ita
 			for (size_t i = 0; i < y_plus.size() - 1; ++i){
 				int count = 0;
 				for (size_t j = i + 1; j < y_plus.size() && count < 8; ++j, ++count){
-					if (DistanceOfTwoPoints(y_plus[i], y_plus[j]) < nearest_distance){
-						nearest_distance = DistanceOfTwoPoints(y_plus[i], y_plus[j]);
+					if (PointDistance(y_plus[i], y_plus[j]) < nearest_distance){
+						nearest_distance = PointDistance(y_plus[i], y_plus[j]);
 						min_pair = make_pair(y_plus[i], y_plus[j]);
 					}
 				}
@@ -332,6 +331,7 @@ namespace ita
 		}
 	}
 
+	/// 寻找最近点对
 	pair<PointD, PointD> GetNearestPointPair(vector<PointD> const &points){
 		if (points.size() < 2){
 			throw exception("Error number of points");
@@ -349,7 +349,7 @@ namespace ita
 			return p1.Y < p2.Y;
 		});
 
-		return NearestPointPair(X, Y);
+		return _NearestPointPair(X, Y);
 	}
 
 	void testComputionalGeometry(){
